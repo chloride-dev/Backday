@@ -18,10 +18,6 @@ email:ZeathDev@outlook.com  &ensp; qq:3521967703
 
 - [Soud Client] 已经跑路
 - [Yape Team](https://github.com/yapeteam)
+- [wzhy233](https://github.com/wzhy233)
 - 3776321299@qq
 - 3474146906@qq
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Img Shields](https://shields.io)
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Pages](https://pages.github.com)
-- [Animate.css](https://daneden.github.io/animate.css)
