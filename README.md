@@ -4,7 +4,7 @@ Backday 一个Minecraft 1.8.9客户端
 
 ### 作者
 
-Zeath && wzhy233 @ Chloride-dev Team
+Zeath && wzhy233 @ Chloride Dev Team
 
 Zeath : email:ZeathDev@outlook.com  &ensp; qq:3521967703    
 wzhy233 : email:wzhy233@outlook.com &ensp; qq:3641336958
