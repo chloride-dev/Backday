@@ -2,14 +2,6 @@
 
 Backday 一个Minecraft 1.8.9客户端
 
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![GPL License][license-shield]][license-url]
-
 ### 作者
 
 Zeath && wzhy233
@@ -33,16 +25,3 @@ email:ZeathDev@outlook.com  &ensp; qq:3521967703
 - [Choose an Open Source License](https://choosealicense.com)
 - [GitHub Pages](https://pages.github.com)
 - [Animate.css](https://daneden.github.io/animate.css)
-
-<!-- links -->
-[your-project-path]:ZeathDev/Backday
-[contributors-shield]: https://img.shields.io/github/contributors/ZeathDev/Backday.svg?style=flat-square
-[contributors-url]: https://github.com/ZeathDev/Backday/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ZeathDev/Backday.svg?style=flat-square
-[forks-url]: https://github.com/ZeathDev/Backday/network/members
-[stars-shield]: https://img.shields.io/github/stars/ZeathDev/Backday.svg?style=flat-square
-[stars-url]: https://github.com/ZeathDev/Backday/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ZeathDev/Backday.svg?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/ZeathDev/Backday.svg
-[license-shield]: https://img.shields.io/github/license/ZeathDev/Backday.svg?style=flat-square
-[license-url]: https://github.com/ZeathDev/Backday/blob/master/LICENSE.txt
