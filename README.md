@@ -14,7 +14,7 @@ wzhy233 : email:wzhy233@outlook.com &ensp; qq:3641336958
 
 ### 版权说明
 
-该项目签署了GPL v3 授权许可，详情请参阅 [LICENSE.txt](https://github.com/ZeathDev/Backday/blob/master/LICENSE.txt)
+该项目签署了GPL v3 授权许可，详情请参阅 [LICENSE.txt](https://github.com/chloride-dev/Backday/blob/master/LICENSE.txt)
 
 ### 鸣谢
 
