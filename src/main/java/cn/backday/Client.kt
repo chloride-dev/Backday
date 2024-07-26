@@ -5,15 +5,19 @@ import cn.backday.config.FileManager
 import cn.backday.config.ModuleConfig
 import cn.backday.manager.TargetManager
 import cn.backday.module.ModuleManager
+import com.mojang.authlib.*
 import com.darkmagician6.eventapi.EventManager
+import net.minecraft.client.Minecraft
 import org.lwjgl.opengl.Display
+import sun.audio.AudioPlayer.player
 
 object Client {
     val clientName = "Backday"
-    val clientVersion = "1.0.0"
-    val title = "$clientName v${clientVersion} | Let the world go back to that day"
+    val clientVersion = "cd25ec54"
+   // val title = "$clientName ${clientVersion}"
+   val playerId = Minecraft.getMinecraft().session.username
+   val title = "$clientName $clientVersion - $playerId"
     val isDev = false
-
     // Manager
     val moduleManager = ModuleManager()
     val fileManager = FileManager()
