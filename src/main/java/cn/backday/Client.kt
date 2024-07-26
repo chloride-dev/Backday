@@ -5,19 +5,17 @@ import cn.backday.config.FileManager
 import cn.backday.config.ModuleConfig
 import cn.backday.manager.TargetManager
 import cn.backday.module.ModuleManager
-import com.mojang.authlib.*
+import cn.backday.utils.misc.GitUtils.gitInfo
 import com.darkmagician6.eventapi.EventManager
-import net.minecraft.client.Minecraft
 import org.lwjgl.opengl.Display
-import sun.audio.AudioPlayer.player
 
 object Client {
     val clientName = "Backday"
-    val clientVersion = "cd25ec54"
-   // val title = "$clientName ${clientVersion}"
-   val playerId = Minecraft.getMinecraft().session.username
-   val title = "$clientName $clientVersion - $playerId"
+    val clientCommit = gitInfo["git.commit.id.abbrev"]?.let { "git-$it" } ?: "unknown"
+    val clientBranch = gitInfo["git.branch"]?.toString() ?: "unknown"
+    val title = "$clientName (${clientCommit.replace("git-", "")}/${clientBranch}) | Let the world go back to that day"
     val isDev = false
+
     // Manager
     val moduleManager = ModuleManager()
     val fileManager = FileManager()
