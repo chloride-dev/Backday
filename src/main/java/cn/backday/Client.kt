@@ -7,13 +7,16 @@ import cn.backday.manager.TargetManager
 import cn.backday.module.ModuleManager
 import cn.backday.utils.misc.GitUtils.gitInfo
 import com.darkmagician6.eventapi.EventManager
+import net.minecraft.client.Minecraft
 import org.lwjgl.opengl.Display
 
 object Client {
     val clientName = "Backday"
     val clientCommit = gitInfo["git.commit.id.abbrev"]?.let { "git-$it" } ?: "unknown"
     val clientBranch = gitInfo["git.branch"]?.toString() ?: "unknown"
-    val title = "$clientName (${clientCommit.replace("git-", "")}/${clientBranch}) | Let the world go back to that day"
+    val playerId = Minecraft.getMinecraft().session.username
+    val title1 = "$clientName (${clientCommit.replace("git-", "")}/${clientBranch}) | Let the world go back to that day"
+    val title2 = "$clientName (${clientCommit.replace("git-", "")}/${clientBranch}) - $playerId"
     val isDev = false
 
     // Manager
@@ -25,7 +28,7 @@ object Client {
     val moduleConfig = ModuleConfig()
 
     fun startClient() {
-        Display.setTitle(title)
+        Display.setTitle(title2)
 
         // init something
         targetManager.init()
