@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '2.0.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
     id 'com.gorylenko.gradle-git-properties' version '2.4.0'
 }
 
@@ -67,6 +68,7 @@ jar {
         }
     }
 }
+
 kotlin {
     jvmToolchain(8)
 }
