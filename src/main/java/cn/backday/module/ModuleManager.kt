@@ -2,6 +2,7 @@ package cn.backday.module
 
 import cn.backday.module.impl.client.Target
 import cn.backday.module.impl.combat.AimAssist
+import cn.backday.module.impl.misc.Teams
 import cn.backday.module.impl.movement.Sprint
 import cn.backday.module.impl.render.ArrayListMod
 import cn.backday.module.impl.render.WaterMark
@@ -22,6 +23,9 @@ class ModuleManager {
 
         // Combat
         moduleList.add(AimAssist)
+
+        // Misc
+        moduleList.add(Teams)
 
         // Movement
         moduleList.add(Sprint)

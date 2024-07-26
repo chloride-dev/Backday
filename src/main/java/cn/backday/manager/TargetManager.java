@@ -3,6 +3,7 @@ package cn.backday.manager;
 import cn.backday.Client;
 import cn.backday.api.event.impl.game.TickEvent;
 import cn.backday.module.impl.client.Target;
+import cn.backday.module.impl.misc.Teams;
 import cn.backday.utils.MinecraftInterface;
 import com.darkmagician6.eventapi.EventManager;
 import com.darkmagician6.eventapi.EventTarget;
@@ -52,6 +53,7 @@ public class TargetManager extends ConcurrentLinkedQueue<EntityLivingBase> imple
         return this.stream()
                 .filter(entity -> mc.thePlayer.getDistanceToEntity(entity) < range)
                 .filter(entity -> mc.theWorld.loadedEntityList.contains(entity))
+                .filter(entity -> !Teams.INSTANCE.isInYourTeam(entity))
                 .sorted(Comparator.comparingDouble(entity -> mc.thePlayer.getDistanceSqToEntity(entity)))
                 .collect(Collectors.toList());
     }
