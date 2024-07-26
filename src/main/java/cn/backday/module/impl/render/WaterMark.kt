@@ -13,7 +13,7 @@ import org.lwjgl.input.Keyboard
 import java.awt.Color
 
 object WaterMark : Module("WaterMark", "water mark", ModuleCategory.Render, Keyboard.KEY_H) {
-    private val logo = ResourceLocation("Backday/mainmenu/logo.png")
+    private val logo = ResourceLocation("Backday/icons/icon_100.png")
 
     override fun onInitialize() {
         toggled = true

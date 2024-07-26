@@ -32,14 +32,7 @@ public class LunarMainMenu extends GuiScreen {
 
     private QuitButton btnQuit;
 
-    private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[]{
-            new ResourceLocation("Backday/mainmenu/panorama/panorama_0.png"),
-            new ResourceLocation("Backday/mainmenu/panorama/panorama_1.png"),
-            new ResourceLocation("Backday/mainmenu/panorama/panorama_2.png"),
-            new ResourceLocation("Backday/mainmenu/panorama/panorama_3.png"),
-            new ResourceLocation("Backday/mainmenu/panorama/panorama_4.png"),
-            new ResourceLocation("Backday/mainmenu/panorama/panorama_5.png")
-    };
+    private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[]{new ResourceLocation("Backday/mainmenu/panorama/panorama_0.png"), new ResourceLocation("Backday/mainmenu/panorama/panorama_1.png"), new ResourceLocation("Backday/mainmenu/panorama/panorama_2.png"), new ResourceLocation("Backday/mainmenu/panorama/panorama_3.png"), new ResourceLocation("Backday/mainmenu/panorama/panorama_4.png"), new ResourceLocation("Backday/mainmenu/panorama/panorama_5.png")};
 
     private static int panoramaTimer;
     private ResourceLocation backgroundTexture;
@@ -48,7 +41,7 @@ public class LunarMainMenu extends GuiScreen {
     public void initGui() {
         this.backgroundTexture = this.mc.getTextureManager().getDynamicTextureLocation("background", new DynamicTexture(256, 256));
 
-        this.logo = new ResourceLocation("Backday/mainmenu/logo.png");
+        this.logo = new ResourceLocation("Backday/icons/icon_100.png");
 
         this.btnSingleplayer = new MainButton("S I N G L E P L A Y E R", this.width / 2 - 66, this.height / 2);
         this.btnMultiplayer = new MainButton("M U L T I P L A Y E R", this.width / 2 - 66, this.height / 2 + 15);
