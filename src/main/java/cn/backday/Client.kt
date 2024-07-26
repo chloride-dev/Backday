@@ -7,11 +7,12 @@ import cn.backday.manager.TargetManager
 import cn.backday.module.ModuleManager
 import com.darkmagician6.eventapi.EventManager
 import org.lwjgl.opengl.Display
+import java.io.File
 
 object Client {
     val clientName = "Backday"
     val clientVersion = "1.0.0"
-    val title = "$clientName v${clientVersion} | 让世界回到那一天"
+    val title = "$clientName v${clientVersion} | Let the world go back to that day"
     val isDev = false
 
     // Manager
@@ -21,9 +22,10 @@ object Client {
     val componentManager = ComponentManager()
 
     val moduleConfig = ModuleConfig()
-
+    //val icon = File("resoures/icon/icon.png")
     fun startClient() {
         Display.setTitle(title)
+        //Display.setIcon()
 
         // init something
         targetManager.init()
