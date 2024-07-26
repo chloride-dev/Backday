@@ -20,7 +20,7 @@ wzhy233 : email:wzhy233@outlook.com &ensp; qq:3641336958
 
 - [Soud Client] 已经跑路
 - [Yape Team](https://github.com/yapeteam)
-- [wzhy233](https://github.com/wzhy233)
 - [Liquidbounce](https://liquidbounce.net)
+- [wzhy233](https://github.com/wzhy233)
 - 3776321299@qq
 - 3474146906@qq
