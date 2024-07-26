@@ -73,12 +73,12 @@ class ModuleManager {
     fun setKeybind(module: Module, key: Int) {
         var hasIt = false
         val newMap: MultiValuedMap<Int, Module> = ArrayListValuedHashMap()
-        for ((key, value) in keyBinds.entries()) {
+        for ((keys, value) in keyBinds.entries()) {
             if (value == module) {
-                newMap.put(key, value)
+                newMap.put(keys, value)
                 hasIt = true
             } else {
-                newMap.put(key, value)
+                newMap.put(keys, value)
             }
         }
         if (!hasIt) {

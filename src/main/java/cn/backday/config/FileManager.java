@@ -6,15 +6,12 @@ import net.minecraft.client.Minecraft;
 import java.io.File;
 
 public class FileManager {
-    private final Minecraft mc = Minecraft.getMinecraft();
-
-    // Backday
     private final File backdayDir;
     private final File bConfigDir;
     private final File bConfigFile;
 
     public FileManager() {
-        // NekoCat
+        Minecraft mc = Minecraft.getMinecraft();
         backdayDir = new File(mc.mcDataDir, "Backday");
         bConfigDir = new File(backdayDir, "Configs");
         bConfigFile = new File(bConfigDir, "Default.cfg");

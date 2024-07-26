@@ -7,11 +7,11 @@ import com.darkmagician6.eventapi.EventManager
 import net.minecraft.client.Minecraft
 
 open class Module {
+    val mc: Minecraft = Minecraft.getMinecraft()
     var moduleName: String
     var description: String
     var moduleCategory: ModuleCategory
     var keybind = 0
-    val mc = Minecraft.getMinecraft()
     val font = FontUtil()
 
     @JvmField
