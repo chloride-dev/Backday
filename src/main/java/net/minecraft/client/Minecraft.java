@@ -29,6 +29,7 @@ import cn.backday.api.event.impl.game.TickEvent;
 import cn.backday.api.event.impl.key.KeyEvent;
 import cn.backday.ui.mainmenu.LunarMainMenu;
 import com.darkmagician6.eventapi.EventManager;
+import com.sun.jna.WString;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.Validate;
 import org.apache.logging.log4j.LogManager;
@@ -195,6 +196,7 @@ import net.minecraft.world.storage.WorldInfo;
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
+
     private static final Logger logger = LogManager.getLogger();
     private static final ResourceLocation locationMojangPng = new ResourceLocation("textures/gui/title/mojang.png");
     public static final boolean isRunningOnMac = Util.getOSType() == Util.EnumOS.OSX;
@@ -480,6 +482,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
      */
     private void startGame() throws LWJGLException, IOException
     {
+    //    logger.info("Starting Backday");
         this.gameSettings = new GameSettings(this, this.mcDataDir);
         this.defaultResourcePacks.add(this.mcDefaultResourcePack);
         this.startTimerHackThread();
@@ -634,7 +637,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private void createDisplay() throws LWJGLException
     {
         Display.setResizable(true);
-        Display.setTitle("Backday Client");
+        Display.setTitle("Backday");
 
         try
         {
