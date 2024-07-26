@@ -2,6 +2,8 @@
 
 Backday 一个Minecraft 1.8.9客户端
 
+![Alt](https://repobeats.axiom.co/api/embed/0bea553c66b2b2f63c57d9ff9b214d0c449a34e8.svg "Repobeats analytics image")
+
 ### 作者
 
 Zeath && wzhy233 @ Chloride Dev Team
