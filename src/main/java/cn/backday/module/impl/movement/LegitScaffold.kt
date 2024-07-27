@@ -33,7 +33,7 @@ object LegitScaffold : Module("LegitScaffold", "auto sneak", ModuleCategory.Move
 
             if (mc.thePlayer.onGround && (PlayerUtils.blockRelativeToPlayer(
                     0.0, -1.0, 0.0
-                ) is BlockAir) && !mc.gameSettings.keyBindForward.isKeyDown
+                ) is BlockAir) && (!mc.gameSettings.keyBindForward.isKeyDown && !mc.gameSettings.keyBindLeft.isKeyDown && !mc.gameSettings.keyBindRight.isKeyDown)
             ) {
                 if (!sneaked) {
                     sneaked = true
