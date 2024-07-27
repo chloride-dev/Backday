@@ -60,7 +60,7 @@ public class ResourcePackListEntryDefault extends ResourcePackListEntry
             logger.error((String)"Couldn\'t load metadata info", (Throwable)ioexception);
         }
 
-        return EnumChatFormatting.RED + "Missing " + "pack.mcmeta" + " :(";
+        return EnumChatFormatting.AQUA + "Backday Resources";
     }
 
     protected boolean func_148309_e()

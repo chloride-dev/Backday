@@ -10,6 +10,7 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import cn.backday.Client;
 import java.util.List;
 import java.util.concurrent.Callable;
 import net.minecraft.util.ReportedException;
@@ -23,6 +24,7 @@ import org.apache.logging.log4j.Logger;
 
 public class CrashReport
 {
+
     private static final Logger logger = LogManager.getLogger();
 
     /** Description of the crash report. */
@@ -61,6 +63,12 @@ public class CrashReport
             public String call()
             {
                 return "1.8.9";
+            }
+        });
+        this.theReportCategory.addCrashSectionCallable("Backday Version", new Callable<String>()
+        {
+            public String call() throws Exception {
+                return "unknown";
             }
         });
         this.theReportCategory.addCrashSectionCallable("Operating System", new Callable<String>()
@@ -244,7 +252,7 @@ public class CrashReport
         }
 
         StringBuilder stringbuilder = new StringBuilder();
-        stringbuilder.append("---- Minecraft Crash Report ----\n");
+        stringbuilder.append("---- Backday Client Crash Report ----\n");
         Reflector.call(Reflector.BlamingTransformer_onCrash, new Object[] {stringbuilder});
         Reflector.call(Reflector.CoreModManager_onCrash, new Object[] {stringbuilder});
         stringbuilder.append("// ");

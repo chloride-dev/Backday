@@ -47,8 +47,8 @@ public class LunarMainMenu extends GuiScreen {
         this.btnMultiplayer = new MainButton("M U L T I P L A Y E R", this.width / 2 - 66, this.height / 2 + 15);
 
         int yPos = this.height - 20;
-        this.btnLunarOptions = new ImageButton("LUNAR SETTINGS", new ResourceLocation("Backday/mainmenu/icons/lunar.png"), this.width / 2 - 30, yPos);
-        this.btnCosmetics = new ImageButton("LUNAR COSMETICS", new ResourceLocation("Backday/mainmenu/icons/cosmetics.png"), this.width / 2 - 15, yPos);
+        this.btnLunarOptions = new ImageButton("SETTINGS", new ResourceLocation("Backday/mainmenu/icons/lunar.png"), this.width / 2 - 30, yPos);
+        this.btnCosmetics = new ImageButton("COSMETICS", new ResourceLocation("Backday/mainmenu/icons/cosmetics.png"), this.width / 2 - 15, yPos);
         this.btnMinecraftOptions = new ImageButton("MINECRAFT SETTINGS", new ResourceLocation("Backday/mainmenu/icons/cog.png"), this.width / 2, yPos);
         this.btnLanguage = new ImageButton("LANGUAGE", new ResourceLocation("Backday/mainmenu/icons/globe.png"), this.width / 2 + 15, yPos);
 

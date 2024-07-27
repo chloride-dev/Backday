@@ -228,6 +228,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     public int displayWidth;
     public int displayHeight;
 
+
     /** True if the player is connected to a realms server */
     private boolean connectedToRealms = false;
     public Timer timer = new Timer(20.0F);
@@ -322,7 +323,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
     /** The profiler instance */
     public final Profiler mcProfiler = new Profiler();
-
+    private ResourceLocation logo;
     /**
      * Keeps track of how long the debug crash keycombo (F3+C) has been pressed for, in order to crash after 10 seconds.
      */
@@ -382,6 +383,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.launchedVersion = gameConfig.gameInfo.version;
         this.twitchDetails = gameConfig.userInfo.userProperties;
         this.profileProperties = gameConfig.userInfo.profileProperties;
+        this.logo = new ResourceLocation("Backday/icons/icon_32.png");
         this.mcDefaultResourcePack = new DefaultResourcePack((new ResourceIndex(gameConfig.folderInfo.assetsDir, gameConfig.folderInfo.assetIndex)).getResourceMap());
         this.proxy = gameConfig.userInfo.proxy == null ? Proxy.NO_PROXY : gameConfig.userInfo.proxy;
         this.sessionService = (new YggdrasilAuthenticationService(gameConfig.userInfo.proxy, UUID.randomUUID().toString())).createMinecraftSessionService();
@@ -637,7 +639,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     private void createDisplay() throws LWJGLException
     {
         Display.setResizable(true);
-        Display.setTitle("Backday");
+        Display.setTitle("Powered by Chloride Development Team");
 
         try
         {
@@ -688,15 +690,19 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         {
             InputStream inputstream = null;
             InputStream inputstream1 = null;
-
+            InputStream icon16 = null;
+            InputStream icon32 = null;
             try
             {
+
                 inputstream = this.mcDefaultResourcePack.getInputStreamAssets(new ResourceLocation("icons/icon_16x16.png"));
                 inputstream1 = this.mcDefaultResourcePack.getInputStreamAssets(new ResourceLocation("icons/icon_32x32.png"));
+                icon16 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_16.png"));
+                icon32 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_32.png"));
 
                 if (inputstream != null && inputstream1 != null)
                 {
-                    Display.setIcon(new ByteBuffer[] {this.readImageToBuffer(inputstream), this.readImageToBuffer(inputstream1)});
+                    Display.setIcon(new ByteBuffer[] {this.readImageToBuffer(icon16), this.readImageToBuffer(icon32)});
                 }
             }
             catch (IOException ioexception)
