@@ -3,6 +3,7 @@ package cn.backday.module
 import cn.backday.module.impl.client.Target
 import cn.backday.module.impl.combat.AimAssist
 import cn.backday.module.impl.misc.Teams
+import cn.backday.module.impl.movement.LegitScaffold
 import cn.backday.module.impl.movement.Sprint
 import cn.backday.module.impl.render.ArrayListMod
 import cn.backday.module.impl.render.WaterMark
@@ -29,6 +30,7 @@ class ModuleManager {
 
         // Movement
         moduleList.add(Sprint)
+        moduleList.add(LegitScaffold)
 
         //Render
         moduleList.add(WaterMark)
