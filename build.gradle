@@ -53,14 +53,15 @@ dependencies {
     implementation group: 'com.mojang', name: 'authlib', version: '1.5.21'
     implementation group: 'tv.twitch', name: 'twitch', version: '6.5'
 
-    configurations.implementation.extendsFrom(configurations.addLib)
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
     implementation group: 'com.github.nifty-gui', name: 'nifty-examples-slick2d', version: '1.4.3'
+
+    configurations.implementation.extendsFrom(configurations.addLib)
 }
 
 jar {
-    from{
+    from {
         configurations.addLib.collect {
             if(!it.isDirectory()){
                 zipTree(it)
@@ -71,4 +72,9 @@ jar {
 
 kotlin {
     jvmToolchain(8)
+}
+
+task copyJars(type: Copy) {
+    from configurations.runtimeClasspath
+    into "$buildDir/libs/libs/"
 }

@@ -80,7 +80,7 @@ public class LunarMainMenu extends GuiScreen {
         this.btnQuit.drawButton(mouseX, mouseY);
 
         String s = "Copyright Mojang Studios. Do not distribute!";
-        FontUtil.TEXT.getFont().drawString(Client.INSTANCE.getClientName() + " Client 1.8.9 (" + Client.INSTANCE.getClientCommit().substring(4) + "/" + Client.INSTANCE.getClientBranch() + ")", 7, this.height - 11, new Color(255, 255, 255, 100).getRGB());
+        FontUtil.TEXT.getFont().drawString(Client.INSTANCE.getClientName() + " Client 1.8.9 (" + Client.INSTANCE.getClientCommit() + "/" + Client.INSTANCE.getClientBranch() + ")", 7, this.height - 11, new Color(255, 255, 255, 100).getRGB());
         FontUtil.TEXT.getFont().drawString(s, this.width - FontUtil.TEXT.getFont().getWidth(s) - 6, this.height - 11, new Color(255, 255, 255, 100).getRGB());
 
         super.drawScreen(mouseX, mouseY, partialTicks);

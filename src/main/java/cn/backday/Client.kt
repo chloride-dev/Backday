@@ -12,11 +12,10 @@ import org.lwjgl.opengl.Display
 
 object Client {
     val clientName = "Backday"
-    val clientCommit = gitInfo["git.commit.id.abbrev"]?.let { "git-$it" } ?: "unknown"
+    val clientCommit = gitInfo["git.commit.id.abbrev"] ?: "unknown"
     val clientBranch = gitInfo["git.branch"]?.toString() ?: "unknown"
     val playerId = Minecraft.getMinecraft().session.username
-    val title1 = "$clientName (${clientCommit.replace("git-", "")}/${clientBranch}) | Let the world go back to that day"
-    val title2 = "$clientName (${clientCommit.replace("git-", "")}/${clientBranch}) - $playerId"
+    val title = "$clientName (${clientCommit}/${clientBranch}) - $playerId"
     val isDev = false
 
     // Manager
@@ -28,7 +27,7 @@ object Client {
     val moduleConfig = ModuleConfig()
 
     fun startClient() {
-        Display.setTitle(title2)
+        Display.setTitle(title)
 
         // init something
         targetManager.init()
