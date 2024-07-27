@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation
 import org.lwjgl.input.Keyboard
 import java.awt.Color
 
-object WaterMark : Module("WaterMark", "water mark", ModuleCategory.Render, Keyboard.KEY_H) {
+object WaterMark : Module("WaterMark", "water mark", ModuleCategory.Render) {
     private val logo = ResourceLocation("Backday/icons/icon_100.png")
 
     override fun onInitialize() {
@@ -20,6 +20,7 @@ object WaterMark : Module("WaterMark", "water mark", ModuleCategory.Render, Keyb
     }
 
     @EventTarget
+
     fun onRender2D(event: Render2DEvent) {
         if (mc.gameSettings.showDebugInfo) return
 

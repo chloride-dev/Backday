@@ -11,7 +11,7 @@ import org.lwjgl.input.Keyboard
 import org.lwjgl.opengl.GL11
 
 
-object ArrayListMod : Module("ArrayList", "display modules", ModuleCategory.Render, Keyboard.KEY_H) {
+object ArrayListMod : Module("ArrayList", "display modules", ModuleCategory.Render) {
     private val fontShadow = BoolValue("Font Shadow", true)
 
     override fun onInitialize() {
