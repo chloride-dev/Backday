@@ -16,7 +16,7 @@ import net.minecraft.entity.EntityLivingBase
 import net.minecraft.util.MovingObjectPosition
 import org.lwjgl.input.Keyboard
 
-object AimAssist : Module("AimAssist", "auto aim", ModuleCategory.Combat, Keyboard.KEY_R) {
+object AimAssist : Module("AimAssist", "auto aim", ModuleCategory.Combat, Keyboard.KEY_F) {
     private val strengthMax = IntValue("Max Strength", 30, 1, 100)
     private val strengthMin = IntValue("Min Strength", 10, 1, 100)
     private val onRotate = BoolValue("On Mouse Movement", true)

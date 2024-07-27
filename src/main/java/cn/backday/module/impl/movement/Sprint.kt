@@ -10,11 +10,12 @@ import com.darkmagician6.eventapi.EventTarget
 import net.minecraft.client.settings.KeyBinding
 import org.lwjgl.input.Keyboard
 
-object Sprint : Module("Sprint", "auto sprint", ModuleCategory.Movement, Keyboard.KEY_B) {
+object Sprint : Module("Sprint", "auto sprint", ModuleCategory.Movement) {
     private val legit = BoolValue("Legit Mode", true)
 
     @EventTarget
     fun onTick(event: TickEvent) {
+        toggled = true
         if (legit.get()) {
             KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.keyCode, MovementUtils.isMoving())
         } else {
