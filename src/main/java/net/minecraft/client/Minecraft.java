@@ -252,7 +252,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
     /**
      * When you place a block, it's set to 6, decremented once per tick, when it's 0, you can place another block.
      */
-    private int rightClickDelayTimer;
+    public int rightClickDelayTimer;
     private String serverName;
     private int serverPort;
 
@@ -1338,7 +1338,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
 
     /**
      * Called when user clicked he's mouse right button (place)
-     */ private void rightClickMouse() {
+     */ public void rightClickMouse() {
         if (!this.playerController.getIsHittingBlock()) {
             this.rightClickDelayTimer = 4;
             boolean flag = true;
@@ -1474,6 +1474,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
      * Runs the current tick.
      */
     public void runTick() throws IOException {
+        if (thePlayer != null) {
+            thePlayer.movementYaw = thePlayer.velocityYaw = thePlayer.rotationYaw;
+        }
+
         if (this.rightClickDelayTimer > 0) {
             --this.rightClickDelayTimer;
         }

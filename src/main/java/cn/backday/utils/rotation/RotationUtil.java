@@ -2,9 +2,11 @@ package cn.backday.utils.rotation;
 
 import cn.backday.utils.MinecraftInterface;
 import cn.backday.utils.math.MathConst;
-import cn.backday.utils.math.vector.*;
+import cn.backday.utils.math.vector.Vector2f;
+import cn.backday.utils.math.vector.Vector3d;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
@@ -20,8 +22,7 @@ public class RotationUtil implements MinecraftInterface {
     }
 
     public static Vector2f calculate(final Entity entity) {
-        return calculate(entity.getCustomPositionVector().add(0, Math.max(0, Math.min(mc.thePlayer.posY - entity.posY +
-                mc.thePlayer.getEyeHeight(), (entity.getEntityBoundingBox().maxY - entity.getEntityBoundingBox().minY) * 0.9)), 0));
+        return calculate(entity.getCustomPositionVector().add(0, Math.max(0, Math.min(mc.thePlayer.posY - entity.posY + mc.thePlayer.getEyeHeight(), (entity.getEntityBoundingBox().maxY - entity.getEntityBoundingBox().minY) * 0.9)), 0));
     }
 
     public static Vector2f calculate(final Entity entity, final boolean adaptive, final double range) {
@@ -33,10 +34,7 @@ public class RotationUtil implements MinecraftInterface {
         for (double yPercent = 1; yPercent >= 0; yPercent -= 0.25) {
             for (double xPercent = 1; xPercent >= -0.5; xPercent -= 0.5) {
                 for (double zPercent = 1; zPercent >= -0.5; zPercent -= 0.5) {
-                    Vector2f adaptiveRotations = calculate(entity.getCustomPositionVector().add(
-                            (entity.getEntityBoundingBox().maxX - entity.getEntityBoundingBox().minX) * xPercent,
-                            (entity.getEntityBoundingBox().maxY - entity.getEntityBoundingBox().minY) * yPercent,
-                            (entity.getEntityBoundingBox().maxZ - entity.getEntityBoundingBox().minZ) * zPercent));
+                    Vector2f adaptiveRotations = calculate(entity.getCustomPositionVector().add((entity.getEntityBoundingBox().maxX - entity.getEntityBoundingBox().minX) * xPercent, (entity.getEntityBoundingBox().maxY - entity.getEntityBoundingBox().minY) * yPercent, (entity.getEntityBoundingBox().maxZ - entity.getEntityBoundingBox().minZ) * zPercent));
 
                     if (RayCastUtil.rayCast(adaptiveRotations, range).typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY) {
                         return adaptiveRotations;
@@ -133,8 +131,8 @@ public class RotationUtil implements MinecraftInterface {
             for (int i = 1; i <= (int) (Minecraft.getDebugFPS() / 20f + Math.random() * 10); ++i) {
 
                 if (Math.abs(moveYaw) + Math.abs(movePitch) > 1) {
-                    yaw += (Math.random() - 0.5) / 1000;
-                    pitch -= Math.random() / 200;
+                    yaw += (float) ((Math.random() - 0.5) / 1000);
+                    pitch -= (float) (Math.random() / 200);
                 }
 
                 /*
@@ -152,5 +150,33 @@ public class RotationUtil implements MinecraftInterface {
         }
 
         return new Vector2f(yaw, pitch);
+    }
+
+    public static float[] getRotationsToEntity(EntityLivingBase entity, boolean usePartialTicks) {
+        if (mc.timer == null) return new float[]{0, 0};
+        float partialTicks = mc.timer.renderPartialTicks;
+
+        double entityX = usePartialTicks ? entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * partialTicks : entity.posX;
+        double entityY = usePartialTicks ? entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * partialTicks : entity.posY;
+        double entityZ = usePartialTicks ? entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * partialTicks : entity.posZ;
+
+        double yDiff = mc.thePlayer.posY - entityY;
+
+        double finalEntityY = yDiff >= 0 ? entityY + entity.getEyeHeight() : -yDiff < mc.thePlayer.getEyeHeight() ? mc.thePlayer.posY + mc.thePlayer.getEyeHeight() : entityY;
+
+        return getRotationsToPosition(entityX, finalEntityY, entityZ);
+    }
+
+    public static float[] getRotationsToPosition(double x, double y, double z) {
+        double deltaX = x - mc.thePlayer.posX;
+        double deltaY = y - mc.thePlayer.posY - mc.thePlayer.getEyeHeight();
+        double deltaZ = z - mc.thePlayer.posZ;
+
+        double horizontalDistance = Math.sqrt(deltaX * deltaX + deltaZ * deltaZ);
+
+        float yaw = (float) Math.toDegrees(-Math.atan2(deltaX, deltaZ));
+        float pitch = (float) Math.toDegrees(-Math.atan2(deltaY, horizontalDistance));
+
+        return new float[]{yaw, pitch};
     }
 }

@@ -3,6 +3,7 @@ package cn.backday.module
 import cn.backday.module.impl.client.Target
 import cn.backday.module.impl.combat.AimAssist
 import cn.backday.module.impl.combat.AutoClicker
+import cn.backday.module.impl.combat.LegitAura
 import cn.backday.module.impl.misc.Teams
 import cn.backday.module.impl.movement.LegitScaffold
 import cn.backday.module.impl.movement.Sprint
@@ -26,6 +27,7 @@ class ModuleManager {
         // Combat
         moduleList.add(AimAssist)
         moduleList.add(AutoClicker)
+        moduleList.add(LegitAura)
 
         // Misc
         moduleList.add(Teams)

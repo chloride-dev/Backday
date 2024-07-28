@@ -1,17 +1,18 @@
 package cn.backday.module.impl.combat
 
-import cn.backday.Client
 import cn.backday.api.event.impl.player.MotionEvent
 import cn.backday.api.event.impl.render.Render2DEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import cn.backday.utils.math.MathUtils
 import cn.backday.utils.math.vector.Vector2f
+import cn.backday.utils.misc.TargetUtil
 import cn.backday.utils.rotation.RotationUtil
 import cn.backday.value.impl.BoolValue
 import cn.backday.value.impl.IntValue
 import com.darkmagician6.eventapi.EventTarget
 import net.minecraft.client.renderer.EntityRenderer
+import net.minecraft.entity.Entity
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.util.MovingObjectPosition
 import org.lwjgl.input.Keyboard
@@ -37,13 +38,15 @@ object AimAssist : Module("AimAssist", "auto aim", ModuleCategory.Combat, Keyboa
 
             if (mc.objectMouseOver.typeOfHit === MovingObjectPosition.MovingObjectType.ENTITY) return
 
-            val entities: List<EntityLivingBase> = Client.targetManager.getTargets(5.0)
+            var target: Entity? = null
 
-            if (entities.isEmpty()) {
-                return
+            for (entity in mc.theWorld.loadedEntityList) {
+                if (TargetUtil.shouldAddEntity(entity, 5.0)) {
+                    target = entity as EntityLivingBase?
+                    break
+                }
             }
 
-            val target = entities[0]
             rotations = RotationUtil.calculate(target)
         }
     }

@@ -16,7 +16,7 @@ object Client {
     val clientBranch = gitInfo["git.branch"]?.toString() ?: "unknown"
     val playerId = Minecraft.getMinecraft().session.username
     val title = "$clientName (${clientCommit}/${clientBranch}) - $playerId"
-    val isDev = false
+    val isDev = true
 
     // Manager
     val moduleManager = ModuleManager()
