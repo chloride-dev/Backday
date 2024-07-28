@@ -195,7 +195,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
     /**
      * Mouse left click counter
      */
-    private int leftClickCounter;
+    public int leftClickCounter;
 
     /**
      * Display width
@@ -959,6 +959,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         this.mcProfiler.startSection("tick");
 
         for (int j = 0; j < this.timer.elapsedTicks; ++j) {
+            EventManager.call(new TickEvent());
             this.runTick();
         }
 
@@ -1299,7 +1300,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         }
     }
 
-    private void clickMouse() {
+    public void clickMouse() {
         if (this.leftClickCounter <= 0) {
             this.thePlayer.swingItem();
 
@@ -1796,8 +1797,6 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
 
         if (this.theWorld != null) {
             if (this.thePlayer != null) {
-                EventManager.call(new TickEvent());
-
                 ++this.joinPlayerCounter;
 
                 if (this.joinPlayerCounter == 30) {
