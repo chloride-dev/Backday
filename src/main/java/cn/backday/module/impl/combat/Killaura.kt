@@ -65,6 +65,9 @@ object Killaura : Module("Killaura", "Automatically attack entities while keepin
             val yawDifference = Math.abs(MathUtils.wrapAngleTo180_float(targetYaw - mc.thePlayer.rotationYaw))
             if (yawDifference > 90) {
                 mc.thePlayer.isSprinting = false
+            } else {
+                // Control sprinting based on Killaura's rotation
+                mc.thePlayer.isSprinting = true
             }
 
             // Handle weapon switch
@@ -136,8 +139,8 @@ object Killaura : Module("Killaura", "Automatically attack entities while keepin
             }
         } else {
             stopBlock()
+            mc.thePlayer.isSprinting = false
         }
-
     }
 
     private fun startBlock() {
