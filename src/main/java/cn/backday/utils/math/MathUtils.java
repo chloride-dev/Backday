@@ -105,6 +105,15 @@ public class MathUtils {
         final BigDecimal bigDecimal = new BigDecimal(value);
         return Math.max(0, bigDecimal.stripTrailingZeros().scale());
     }
+    public static float wrapAngleTo180_float(float angle) {
+        angle %= 360;
+        if (angle >= 180) {
+            angle -= 360;
+        } else if (angle < -180) {
+            angle += 360;
+        }
+        return angle;
+    }
 
     public static float roundToFloat(double d) {
         return (float) ((double) Math.round(d * 1.0E8D) / 1.0E8D);

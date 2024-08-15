@@ -1,15 +1,12 @@
 package cn.backday.module.impl.combat
-import net.minecraft.util.ChatComponentText
 
 import cn.backday.api.event.impl.player.UpdateEvent
 import cn.backday.component.impl.RotationComponent
 import cn.backday.component.impl.rotationcomponent.MovementFix
-import net.minecraft.util.EnumChatFormatting
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import cn.backday.utils.math.CPSUtils
 import cn.backday.utils.math.MathUtils
-import cn.backday.utils.math.vector.Vector2f
 import cn.backday.utils.misc.TargetUtil
 import cn.backday.utils.misc.TimerUtils
 import cn.backday.utils.rotation.RotationUtil
@@ -23,17 +20,13 @@ import net.minecraft.item.ItemFishingRod
 import net.minecraft.item.ItemSword
 import org.lwjgl.input.Keyboard
 
-
-object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Combat, Keyboard.KEY_R) {
+object Killaura : Module("Killaura", "Automatically attack entities without rotating view", ModuleCategory.Combat, Keyboard.KEY_K) {
     private val searchRange = FloatValue("Range", 5f, 0f, 8f)
     private val cps = IntValue("CPS", 10, 1, 20)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
-    private val maxRotationSpeed = IntValue("Max Rotation Speed", 60, 1, 180)
-    private val minRotationSpeed = IntValue("Min Rotation Speed", 40, 1, 180)
     private val autoBlock = BoolValue("AutoBlock", false)
     private val blockDelay = IntValue("BlockDelay", 2, 1, 10, autoBlock::get)
     private val autoRod = BoolValue("AutoRod", true)
-
 
     private val timer = TimerUtils()
 
@@ -57,21 +50,18 @@ object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Comb
             }
         }
 
-        val rotationSpeed = MathUtils.getRandomInRange(maxRotationSpeed.get(), minRotationSpeed.get()).toDouble()
-
-        // Rotations
         if (target != null) {
+            // Calculate the angles needed to aim at the target
             val rotation = RotationUtil.getRotationsToEntity(target, true)
-            val rotationVec = Vector2f(rotation[0], rotation[1])
+            val targetYaw = rotation[0]
+            val targetPitch = rotation[1]
 
-            RotationComponent.setRotations(rotationVec, rotationSpeed / 18, MovementFix.NORMAL)
-            mc.thePlayer.rotationYaw = RotationComponent.rotations!!.x
-            mc.thePlayer.rotationPitch = RotationComponent.rotations!!.y
-        }
+            // Prevent sprinting if the target is behind the player
+            val yawDifference = Math.abs(MathUtils.wrapAngleTo180_float(targetYaw - mc.thePlayer.rotationYaw))
+            if (yawDifference > 90) {
+                mc.thePlayer.isSprinting = false
+            }
 
-
-        // Attack & AutoRod
-        if (target != null) {
             val cps = CPSUtils.generate(cps.get().toDouble(), cpsRange.get().toDouble())
 
             if (mc.thePlayer.ticksExisted % blockDelay.get() == 0) {
@@ -102,9 +92,7 @@ object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Comb
                                 mc.rightClickDelayTimer = 0
                                 mc.rightClickMouse()
                                 fishingRodThrow = true
-
                             }
-
                             break
                         }
                     }
@@ -113,21 +101,6 @@ object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Comb
         } else {
             stopBlock()
         }
-        // Render target info on the screen
-        // Send target info to the chat
-        val targetName = target?.name ?: "None"
-        val distance = target?.getDistanceToEntity(mc.thePlayer)?.let { String.format("%.1f", it) } ?: "N/A"
-        val currentCPS = String.format("%.1f", CPSUtils.generate(cps.get().toDouble(), cpsRange.get().toDouble()))
-        val rotationYaw = mc.thePlayer.rotationYaw.toString()
-
-        if (target != null) {
-            val displayText = "${EnumChatFormatting.YELLOW}Target: $targetName | Distance: $distance | CPS: $currentCPS | Yaw: $rotationYaw"
-
-            // Display the message on the action bar using setRecordPlaying
-            mc.ingameGUI.setRecordPlaying(displayText, false)
-        }
-
-
     }
 
     private fun startBlock() {
@@ -155,5 +128,4 @@ object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Comb
         val aps = 20 / cps
         return timer.hasTimeElapsed((50 * aps).toLong(), true)
     }
-
 }
