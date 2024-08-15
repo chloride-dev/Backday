@@ -7,6 +7,7 @@ import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import cn.backday.utils.math.CPSUtils
 import cn.backday.utils.math.MathUtils
+import cn.backday.utils.math.vector.Vector2f
 import cn.backday.utils.misc.TargetUtil
 import cn.backday.utils.misc.TimerUtils
 import cn.backday.utils.rotation.RotationUtil
@@ -18,9 +19,10 @@ import net.minecraft.client.settings.KeyBinding
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemFishingRod
 import net.minecraft.item.ItemSword
+import net.minecraft.util.EnumChatFormatting
 import org.lwjgl.input.Keyboard
 
-object Killaura : Module("Killaura", "Automatically attack entities without rotating view", ModuleCategory.Combat, Keyboard.KEY_K) {
+object Killaura : Module("Killaura", "Automatically attack entities while keeping player view steady", ModuleCategory.Combat, Keyboard.KEY_K) {
     private val searchRange = FloatValue("Range", 5f, 0f, 8f)
     private val cps = IntValue("CPS", 10, 1, 20)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
@@ -56,10 +58,44 @@ object Killaura : Module("Killaura", "Automatically attack entities without rota
             val targetYaw = rotation[0]
             val targetPitch = rotation[1]
 
-            // Prevent sprinting if the target is behind the player
+            // Apply rotation but keep player's view steady
+            RotationComponent.setRotations(Vector2f(targetYaw, targetPitch), 1.0, MovementFix.NORMAL)
+
+            // Check if the target direction and player's view direction are different
             val yawDifference = Math.abs(MathUtils.wrapAngleTo180_float(targetYaw - mc.thePlayer.rotationYaw))
             if (yawDifference > 90) {
                 mc.thePlayer.isSprinting = false
+            }
+
+            // Handle weapon switch
+            if (autoRod.get()) {
+                // Check if the player is holding a fishing rod and if the weapon needs to be switched
+                if (mc.thePlayer.inventory.currentItem < 9) {
+                    // Find the first weapon and switch to it
+                    for (i in mc.thePlayer.inventory.mainInventory.indices) {
+                        val itemStack = mc.thePlayer.inventory.mainInventory[i]
+                        if (itemStack != null && itemStack.item is ItemSword) {
+                            mc.thePlayer.inventory.currentItem = i
+                            break
+                        }
+                    }
+                }
+            } else {
+                // Switch to a weapon if available, but avoid conflict with autoRod
+                var foundWeapon = false
+                for (i in mc.thePlayer.inventory.mainInventory.indices) {
+                    val itemStack = mc.thePlayer.inventory.mainInventory[i]
+                    if (itemStack != null && itemStack.item is ItemSword) {
+                        if (mc.thePlayer.inventory.currentItem != i) {
+                            mc.thePlayer.inventory.currentItem = i
+                            foundWeapon = true
+                        }
+                        break
+                    }
+                }
+                if (!foundWeapon) {
+                    // If no weapon was found, do not switch
+                }
             }
 
             val cps = CPSUtils.generate(cps.get().toDouble(), cpsRange.get().toDouble())
@@ -101,6 +137,7 @@ object Killaura : Module("Killaura", "Automatically attack entities without rota
         } else {
             stopBlock()
         }
+
     }
 
     private fun startBlock() {
