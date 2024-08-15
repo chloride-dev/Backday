@@ -23,14 +23,15 @@ import org.lwjgl.input.Keyboard
 
 
 object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Combat, Keyboard.KEY_R) {
-    private val searchRange = FloatValue("Range", 3f, 0f, 8f)
-    private val cps = IntValue("CPS", 8, 1, 20)
+    private val searchRange = FloatValue("Range", 5f, 0f, 8f)
+    private val cps = IntValue("CPS", 15, 1, 20)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
     private val maxRotationSpeed = IntValue("Max Rotation Speed", 60, 1, 180)
     private val minRotationSpeed = IntValue("Min Rotation Speed", 40, 1, 180)
-    private val autoBlock = BoolValue("AutoBlock", false)
+    private val autoBlock = BoolValue("AutoBlock", true)
     private val blockDelay = IntValue("BlockDelay", 2, 1, 10, autoBlock::get)
-    private val autoRod = BoolValue("AutoRod", false)
+    private val autoRod = BoolValue("AutoRod", true)
+
 
     private val timer = TimerUtils()
 

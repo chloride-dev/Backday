@@ -6,10 +6,11 @@ import cn.backday.value.impl.BoolValue
 
 object Target : Module("Target", "choose target", ModuleCategory.Client) {
     val player = BoolValue("Players", true)
-    val mobs = BoolValue("Mobs", false)
-    val animals = BoolValue("Animals", false)
+    val mobs = BoolValue("Mobs", true)
+    val animals = BoolValue("Animals", true)
     val invisibles = BoolValue("Invisibles", false)
-    val teams = BoolValue("Teams", false)
+    val teams = BoolValue("Teams", true)
+
 
     override fun onEnable() {
         toggled = false

@@ -14,7 +14,7 @@ import net.minecraft.item.ItemSword
 import org.lwjgl.input.Keyboard
 import org.lwjgl.input.Mouse
 
-object AutoClicker : Module("AutoClicker", "auto click", ModuleCategory.Combat) {
+object AutoClicker : Module("AutoClicker", "auto click", ModuleCategory.Combat , true) {
     private val cps = IntValue("CPS", 8, 1, 20)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
     private val blockHit = BoolValue("Block Hit", false)

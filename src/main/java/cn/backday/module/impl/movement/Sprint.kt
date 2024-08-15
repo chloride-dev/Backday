@@ -10,7 +10,7 @@ import com.darkmagician6.eventapi.EventTarget
 import net.minecraft.client.settings.KeyBinding
 import org.lwjgl.input.Keyboard
 
-object Sprint : Module("Sprint", "auto sprint", ModuleCategory.Movement,Keyboard.KEY_B, true) {
+object Sprint : Module("Sprint", "auto sprint", ModuleCategory.Movement, true) {
     private val legit = BoolValue("Legit Mode", true)
 
     @EventTarget
