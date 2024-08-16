@@ -26,7 +26,7 @@ object Killaura : Module("Killaura", "Automatically attack entities while keepin
     private val searchRange = FloatValue("Range", 5f, 0f, 8f)
     private val cps = IntValue("CPS", 10, 1, 20)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
-    private val autoBlock = BoolValue("AutoBlock", false)
+    private val autoBlock = BoolValue("AutoBlock", true)
     private val blockDelay = IntValue("BlockDelay", 2, 1, 10, autoBlock::get)
     private val autoRod = BoolValue("AutoRod", true)
 
