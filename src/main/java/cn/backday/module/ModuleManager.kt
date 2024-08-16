@@ -5,10 +5,15 @@ import cn.backday.module.impl.combat.AimAssist
 import cn.backday.module.impl.combat.AutoClicker
 import cn.backday.module.impl.combat.Killaura
 import cn.backday.module.impl.combat.LegitAura
+import cn.backday.module.impl.misc.ModifierTest
 import cn.backday.module.impl.misc.Teams
 import cn.backday.module.impl.movement.LegitScaffold
 import cn.backday.module.impl.movement.Sprint
+import cn.backday.module.impl.movement.StrafeFix
+import cn.backday.module.impl.player.Scaffold
 import cn.backday.module.impl.render.ArrayListMod
+import cn.backday.module.impl.render.ESP
+import cn.backday.module.impl.render.Nametags
 import cn.backday.module.impl.render.WaterMark
 import cn.backday.utils.log.Logger
 import com.darkmagician6.eventapi.EventManager
@@ -23,14 +28,18 @@ class ModuleManager {
 
     fun registerModules() {
         // Client
+        moduleList.add(Nametags)
         moduleList.add(Target)
-
+        moduleList.add(ESP)
+        moduleList.add(ModifierTest)
+        moduleList.add(StrafeFix)
         // Combat
         moduleList.add(AimAssist)
         moduleList.add(AutoClicker)
         moduleList.add(LegitAura)
         moduleList.add(Killaura)
         // Misc
+        moduleList.add(Scaffold)
         moduleList.add(Teams)
 
         // Movement

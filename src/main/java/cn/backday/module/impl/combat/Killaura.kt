@@ -2,6 +2,7 @@ package cn.backday.module.impl.combat
 
 import cn.backday.api.event.impl.player.UpdateEvent
 import cn.backday.component.impl.RotationComponent
+
 import cn.backday.component.impl.rotationcomponent.MovementFix
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
@@ -19,10 +20,9 @@ import net.minecraft.client.settings.KeyBinding
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemFishingRod
 import net.minecraft.item.ItemSword
-import net.minecraft.util.EnumChatFormatting
 import org.lwjgl.input.Keyboard
 
-object Killaura : Module("Killaura", "Automatically attack entities while keeping player view steady", ModuleCategory.Combat, Keyboard.KEY_K) {
+object Killaura : Module("KillAura", "Automatically attack entities while keeping player view steady", ModuleCategory.Combat) {
     private val searchRange = FloatValue("Range", 5f, 0f, 8f)
     private val cps = IntValue("CPS", 10, 1, 20)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
@@ -41,40 +41,26 @@ object Killaura : Module("Killaura", "Automatically attack entities while keepin
     fun onUpdate(event: UpdateEvent) {
         if (mc.currentScreen != null) return
 
-        if (!autoBlock.get()) blocking = false
-
         target = null
-
         for (entity in mc.theWorld.loadedEntityList) {
             if (TargetUtil.shouldAddEntity(entity, searchRange.get().toDouble())) {
-                target = entity as EntityLivingBase?
+                target = entity as? EntityLivingBase
                 break
             }
         }
 
         if (target != null) {
-            // Calculate the angles needed to aim at the target
             val rotation = RotationUtil.getRotationsToEntity(target, true)
             val targetYaw = rotation[0]
             val targetPitch = rotation[1]
+            val yawDifference = Math.abs(MathUtils.wrapAngleTo180_float(targetYaw - mc.thePlayer.rotationYaw))
 
-            // Apply rotation but keep player's view steady
             RotationComponent.setRotations(Vector2f(targetYaw, targetPitch), 1.0, MovementFix.NORMAL)
 
-            // Check if the target direction and player's view direction are different
-            val yawDifference = Math.abs(MathUtils.wrapAngleTo180_float(targetYaw - mc.thePlayer.rotationYaw))
-            if (yawDifference > 90) {
-                mc.thePlayer.isSprinting = false
-            } else {
-                // Control sprinting based on Killaura's rotation
-                mc.thePlayer.isSprinting = true
-            }
+            mc.thePlayer.isSprinting = yawDifference < 90
 
-            // Handle weapon switch
             if (autoRod.get()) {
-                // Check if the player is holding a fishing rod and if the weapon needs to be switched
                 if (mc.thePlayer.inventory.currentItem < 9) {
-                    // Find the first weapon and switch to it
                     for (i in mc.thePlayer.inventory.mainInventory.indices) {
                         val itemStack = mc.thePlayer.inventory.mainInventory[i]
                         if (itemStack != null && itemStack.item is ItemSword) {
@@ -84,7 +70,6 @@ object Killaura : Module("Killaura", "Automatically attack entities while keepin
                     }
                 }
             } else {
-                // Switch to a weapon if available, but avoid conflict with autoRod
                 var foundWeapon = false
                 for (i in mc.thePlayer.inventory.mainInventory.indices) {
                     val itemStack = mc.thePlayer.inventory.mainInventory[i]
@@ -97,11 +82,11 @@ object Killaura : Module("Killaura", "Automatically attack entities while keepin
                     }
                 }
                 if (!foundWeapon) {
-                    // If no weapon was found, do not switch
+                    // No weapon found
                 }
             }
 
-            val cps = CPSUtils.generate(cps.get().toDouble(), cpsRange.get().toDouble())
+            val cpsValue = CPSUtils.generate(cps.get().toDouble(), cpsRange.get().toDouble())
 
             if (mc.thePlayer.ticksExisted % blockDelay.get() == 0) {
                 startBlock()
@@ -109,7 +94,7 @@ object Killaura : Module("Killaura", "Automatically attack entities while keepin
                 stopBlock()
             }
 
-            if (shouldAttack(cps)) {
+            if (shouldAttack(cpsValue)) {
                 stopBlock()
                 mc.clickMouse()
 

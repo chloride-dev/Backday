@@ -25,8 +25,8 @@ import org.lwjgl.input.Keyboard
 
 
 object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Combat, Keyboard.KEY_R) {
-    private val searchRange = FloatValue("Range", 6f, 0f, 8f)
-    private val cps = IntValue("CPS", 10, 1, 20)
+    private val searchRange = FloatValue("Range", 4f, 0f, 8f)
+    private val cps = IntValue("CPS", 10, 1, 10)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
     private val maxRotationSpeed = IntValue("Max Rotation Speed", 60, 1, 180)
     private val minRotationSpeed = IntValue("Min Rotation Speed", 40, 1, 180)
@@ -119,9 +119,10 @@ object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Comb
         val distance = target?.getDistanceToEntity(mc.thePlayer)?.let { String.format("%.1f", it) } ?: "N/A"
         val currentCPS = String.format("%.1f", CPSUtils.generate(cps.get().toDouble(), cpsRange.get().toDouble()))
         val rotationYaw = mc.thePlayer.rotationYaw.toString()
+        val targetHealth = target?.health?.let { String.format("%.1f", it) } ?: "N/A"
 
         if (target != null) {
-            val displayText = "${EnumChatFormatting.YELLOW}Target: $targetName | Distance: $distance | CPS: $currentCPS | Yaw: $rotationYaw"
+            val displayText = "${EnumChatFormatting.YELLOW}Target: $targetName | Distance: $distance | Health: $targetHealth | CPS: $currentCPS | Yaw: $rotationYaw"
 
             // Display the message on the action bar using setRecordPlaying
             mc.ingameGUI.setRecordPlaying(displayText, false)
