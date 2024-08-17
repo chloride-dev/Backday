@@ -1,6 +1,6 @@
 package net.minecraft.client.entity;
 
-import cn.backday.api.event.impl.render.LookEvent;
+import cn.backday.event.impl.render.LookEvent;
 import cn.backday.utils.math.vector.Vector2f;
 import com.darkmagician6.eventapi.EventManager;
 import com.mojang.authlib.GameProfile;
@@ -24,8 +24,6 @@ import net.minecraft.world.WorldSettings;
 import net.optifine.player.CapeUtils;
 import net.optifine.player.PlayerConfigurations;
 import net.optifine.reflect.Reflector;
-
-import java.io.File;
 
 public abstract class AbstractClientPlayer extends EntityPlayer
 {

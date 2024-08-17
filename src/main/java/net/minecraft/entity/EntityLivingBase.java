@@ -1,6 +1,6 @@
 package net.minecraft.entity;
 
-import cn.backday.api.event.impl.player.JumpEvent;
+import cn.backday.event.impl.player.JumpEvent;
 import com.darkmagician6.eventapi.EventManager;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;

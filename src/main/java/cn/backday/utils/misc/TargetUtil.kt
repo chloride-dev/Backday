@@ -17,7 +17,7 @@ object TargetUtil {
 
         if (entity !is EntityLivingBase) return false
 
-//        if (!entity.isEntityAlive) return false
+        if (!Target.deaths.get() && !entity.isEntityAlive) return false
 
         if (mc.thePlayer.getDistanceToEntity(entity) > range) return false
 

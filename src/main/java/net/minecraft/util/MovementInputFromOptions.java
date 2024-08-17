@@ -1,6 +1,6 @@
 package net.minecraft.util;
 
-import cn.backday.api.event.impl.player.MoveInputEvent;
+import cn.backday.event.impl.player.MoveInputEvent;
 import com.darkmagician6.eventapi.EventManager;
 import net.minecraft.client.settings.GameSettings;
 

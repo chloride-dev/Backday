@@ -3,7 +3,6 @@ package cn.backday
 import cn.backday.component.ComponentManager
 import cn.backday.config.FileManager
 import cn.backday.config.ModuleConfig
-import cn.backday.manager.TargetManager
 import cn.backday.module.ModuleManager
 import cn.backday.utils.misc.GitUtils.gitInfo
 import com.darkmagician6.eventapi.EventManager
@@ -21,7 +20,6 @@ object Client {
     // Manager
     val moduleManager = ModuleManager()
     val fileManager = FileManager()
-    val targetManager = TargetManager()
     val componentManager = ComponentManager()
 
     val moduleConfig = ModuleConfig()
@@ -30,7 +28,6 @@ object Client {
         Display.setTitle(title)
 
         // init something
-        targetManager.init()
         componentManager.init()
 
         EventManager.register(this)

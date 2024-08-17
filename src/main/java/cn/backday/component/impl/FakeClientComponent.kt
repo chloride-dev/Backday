@@ -1,7 +1,8 @@
 package cn.backday.component.impl
 
-import cn.backday.api.event.impl.network.PacketEvent
+import cn.backday.Client
 import cn.backday.component.Component
+import cn.backday.event.impl.network.PacketEvent
 import com.darkmagician6.eventapi.EventTarget
 import io.netty.buffer.Unpooled
 import net.minecraft.network.PacketBuffer
@@ -15,7 +16,7 @@ class FakeClientComponent : Component() {
 
             if (c17.channelName == "MC|Brand") {
                 c17.data = PacketBuffer(Unpooled.buffer()).writeString(
-                    "lunarclient:smb1314"
+                    "lunarclient:${Client.clientCommit}"
                 )
             }
         }

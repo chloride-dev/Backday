@@ -1,6 +1,6 @@
 package cn.backday.module.impl.combat
 
-import cn.backday.api.event.impl.game.TickEvent
+import cn.backday.event.impl.game.TickEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import cn.backday.utils.math.CPSUtils
@@ -11,7 +11,6 @@ import cn.backday.value.impl.IntValue
 import com.darkmagician6.eventapi.EventTarget
 import net.minecraft.client.settings.KeyBinding
 import net.minecraft.item.ItemSword
-import org.lwjgl.input.Keyboard
 import org.lwjgl.input.Mouse
 
 object AutoClicker : Module("AutoClicker", "auto click", ModuleCategory.Combat , true) {

@@ -1,8 +1,8 @@
 package cn.backday.module.impl.combat
 
-import cn.backday.api.event.impl.player.UpdateEvent
 import cn.backday.component.impl.RotationComponent
 import cn.backday.component.impl.rotationcomponent.MovementFix
+import cn.backday.event.impl.player.UpdateEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import cn.backday.utils.math.CPSUtils
@@ -19,7 +19,6 @@ import net.minecraft.client.settings.KeyBinding
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemFishingRod
 import net.minecraft.item.ItemSword
-import net.minecraft.util.EnumChatFormatting
 import org.lwjgl.input.Keyboard
 
 object Killaura : Module("Killaura", "Automatically attack entities while keeping player view steady", ModuleCategory.Combat, Keyboard.KEY_K) {

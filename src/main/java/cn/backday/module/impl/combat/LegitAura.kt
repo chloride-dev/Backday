@@ -1,10 +1,8 @@
 package cn.backday.module.impl.combat
-import net.minecraft.util.ChatComponentText
 
-import cn.backday.api.event.impl.player.UpdateEvent
 import cn.backday.component.impl.RotationComponent
 import cn.backday.component.impl.rotationcomponent.MovementFix
-import net.minecraft.util.EnumChatFormatting
+import cn.backday.event.impl.player.UpdateEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import cn.backday.utils.math.CPSUtils
@@ -21,19 +19,20 @@ import net.minecraft.client.settings.KeyBinding
 import net.minecraft.entity.EntityLivingBase
 import net.minecraft.item.ItemFishingRod
 import net.minecraft.item.ItemSword
+import net.minecraft.util.EnumChatFormatting
 import org.lwjgl.input.Keyboard
 
 
-object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Combat, Keyboard.KEY_R) {
+object LegitAura : Module("LegitAura", "killaura but very like a legit", ModuleCategory.Combat, Keyboard.KEY_R) {
     private val searchRange = FloatValue("Range", 6f, 0f, 8f)
     private val cps = IntValue("CPS", 10, 1, 20)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
     private val maxRotationSpeed = IntValue("Max Rotation Speed", 60, 1, 180)
     private val minRotationSpeed = IntValue("Min Rotation Speed", 40, 1, 180)
+    private val strictRotation = BoolValue("Strict Rotation", false)
     private val autoBlock = BoolValue("AutoBlock", false)
     private val blockDelay = IntValue("BlockDelay", 2, 1, 10, autoBlock::get)
     private val autoRod = BoolValue("AutoRod", true)
-
 
     private val timer = TimerUtils()
 
@@ -57,21 +56,21 @@ object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Comb
             }
         }
 
-        val rotationSpeed = MathUtils.getRandomInRange(maxRotationSpeed.get(), minRotationSpeed.get()).toDouble()
-
-        // Rotations
         if (target != null) {
+            // Rotations
+            val rotationSpeed = MathUtils.getRandomInRange(maxRotationSpeed.get(), minRotationSpeed.get()).toDouble()
+
             val rotation = RotationUtil.getRotationsToEntity(target, true)
             val rotationVec = Vector2f(rotation[0], rotation[1])
 
             RotationComponent.setRotations(rotationVec, rotationSpeed / 18, MovementFix.NORMAL)
-            mc.thePlayer.rotationYaw = RotationComponent.rotations!!.x
-            mc.thePlayer.rotationPitch = RotationComponent.rotations!!.y
-        }
 
+            if (strictRotation.get()) {
+                mc.thePlayer.rotationYaw = RotationComponent.rotations!!.x
+                mc.thePlayer.rotationPitch = RotationComponent.rotations!!.y
+            }
 
-        // Attack & AutoRod
-        if (target != null) {
+            // Attack & AutoRod
             val cps = CPSUtils.generate(cps.get().toDouble(), cpsRange.get().toDouble())
 
             if (mc.thePlayer.ticksExisted % blockDelay.get() == 0) {
@@ -110,24 +109,22 @@ object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Comb
                     }
                 }
             }
-        } else {
-            stopBlock()
-        }
-        // Render target info on the screen
-        // Send target info to the chat
-        val targetName = target?.name ?: "None"
-        val distance = target?.getDistanceToEntity(mc.thePlayer)?.let { String.format("%.1f", it) } ?: "N/A"
-        val currentCPS = String.format("%.1f", CPSUtils.generate(cps.get().toDouble(), cpsRange.get().toDouble()))
-        val rotationYaw = mc.thePlayer.rotationYaw.toString()
 
-        if (target != null) {
-            val displayText = "${EnumChatFormatting.YELLOW}Target: $targetName | Distance: $distance | CPS: $currentCPS | Yaw: $rotationYaw"
+            // Render target info on the screen
+            // Send target info to the chat
+            val targetName = target?.name ?: "None"
+            val distance = target?.getDistanceToEntity(mc.thePlayer)?.let { String.format("%.1f", it) } ?: "N/A"
+            val currentCPS = String.format("%.1f", cps)
+            val rotationYaw = String.format("%.1f", mc.thePlayer.rotationYaw.toString())
+
+            val displayText =
+                "${EnumChatFormatting.YELLOW}Target: $targetName | Distance: $distance | CPS: $currentCPS | Yaw: $rotationYaw"
 
             // Display the message on the action bar using setRecordPlaying
             mc.ingameGUI.setRecordPlaying(displayText, false)
+        } else {
+            stopBlock()
         }
-
-
     }
 
     private fun startBlock() {

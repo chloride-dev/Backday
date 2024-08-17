@@ -1,9 +1,9 @@
 package cn.backday.component.impl
 
-import cn.backday.api.event.impl.player.*
-import cn.backday.api.event.impl.render.LookEvent
 import cn.backday.component.Component
 import cn.backday.component.impl.rotationcomponent.MovementFix
+import cn.backday.event.impl.player.*
+import cn.backday.event.impl.render.LookEvent
 import cn.backday.utils.math.vector.Vector2f
 import cn.backday.utils.player.MovementUtils
 import cn.backday.utils.rotation.RotationUtil

@@ -1,6 +1,6 @@
 package net.minecraft.entity;
 
-import cn.backday.api.event.impl.player.StrafeEvent;
+import cn.backday.event.impl.player.StrafeEvent;
 import cn.backday.utils.math.vector.Vector3d;
 import com.darkmagician6.eventapi.EventManager;
 import net.minecraft.block.*;
