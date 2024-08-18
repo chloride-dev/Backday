@@ -1,8 +1,8 @@
 package cn.backday.component.impl
 
 import cn.backday.Client
-import cn.backday.api.event.impl.key.KeyEvent
 import cn.backday.component.Component
+import cn.backday.event.impl.key.KeyEvent
 import com.darkmagician6.eventapi.EventTarget
 
 class KeybindComponent : Component() {

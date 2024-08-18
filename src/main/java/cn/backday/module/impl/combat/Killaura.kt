@@ -1,9 +1,9 @@
 package cn.backday.module.impl.combat
 
-import cn.backday.api.event.impl.player.UpdateEvent
 import cn.backday.component.impl.RotationComponent
 
 import cn.backday.component.impl.rotationcomponent.MovementFix
+import cn.backday.event.impl.player.UpdateEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import cn.backday.utils.math.CPSUtils

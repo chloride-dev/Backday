@@ -1,8 +1,8 @@
 package net.minecraft.client;
 
 import cn.backday.Client;
-import cn.backday.api.event.impl.game.TickEvent;
-import cn.backday.api.event.impl.key.KeyEvent;
+import cn.backday.event.impl.game.TickEvent;
+import cn.backday.event.impl.key.KeyEvent;
 import cn.backday.ui.mainmenu.LunarMainMenu;
 import com.darkmagician6.eventapi.EventManager;
 import com.google.common.collect.*;

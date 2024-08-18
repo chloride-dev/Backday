@@ -9,6 +9,7 @@ object Target : Module("Target", "choose target", ModuleCategory.Client) {
     val mobs = BoolValue("Mobs", true)
     val animals = BoolValue("Animals", true)
     val invisibles = BoolValue("Invisibles", false)
+    val deaths = BoolValue("Deaths", false)
     val teams = BoolValue("Teams", true)
 
 

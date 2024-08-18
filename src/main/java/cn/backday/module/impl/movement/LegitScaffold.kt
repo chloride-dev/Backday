@@ -1,7 +1,7 @@
 package cn.backday.module.impl.movement
 
-import cn.backday.api.event.impl.player.MotionEvent
-import cn.backday.api.event.impl.player.MoveInputEvent
+import cn.backday.event.impl.player.MotionEvent
+import cn.backday.event.impl.player.MoveInputEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import cn.backday.utils.player.PlayerUtils

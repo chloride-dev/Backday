@@ -1,7 +1,7 @@
 package net.minecraft.client.entity;
 
-import cn.backday.api.event.impl.player.MotionEvent;
-import cn.backday.api.event.impl.player.UpdateEvent;
+import cn.backday.event.impl.player.MotionEvent;
+import cn.backday.event.impl.player.UpdateEvent;
 import cn.backday.utils.math.vector.Vector2f;
 import com.darkmagician6.eventapi.EventManager;
 import net.minecraft.client.Minecraft;

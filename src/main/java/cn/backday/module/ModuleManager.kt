@@ -21,6 +21,7 @@ import org.apache.commons.collections4.MultiValuedMap
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap
 import java.util.stream.Collectors
 
+
 class ModuleManager {
     var keyBinds: MultiValuedMap<Int, Module> = ArrayListValuedHashMap()
     private val modules: ArrayList<Module> = ArrayList()
@@ -83,11 +84,34 @@ class ModuleManager {
                 return i
             }
         }
+
+        return null
+    }
+
+    fun getModule(cls: Class<out Module?>): Module? {
+        for (m in modules) {
+            if (m.javaClass != cls) continue
+
+            return m
+        }
+
         return null
     }
 
     fun getModules(): ArrayList<Module> {
         return modules
+    }
+
+    fun getModulesInType(t: ModuleCategory): List<Module> {
+        val output = ArrayList<Module>()
+
+        for (m in modules) {
+            if (m.moduleCategory != t) continue
+
+            output.add(m)
+        }
+
+        return output
     }
 
     fun setKeybind(module: Module, key: Int) {

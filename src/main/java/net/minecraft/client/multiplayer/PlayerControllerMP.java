@@ -1,6 +1,6 @@
 package net.minecraft.client.multiplayer;
 
-import cn.backday.api.event.impl.player.AttackEvent;
+import cn.backday.event.impl.player.AttackEvent;
 import com.darkmagician6.eventapi.EventManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

@@ -1,6 +1,6 @@
 package cn.backday.utils.player;
 
-import cn.backday.api.event.impl.player.MoveInputEvent;
+import cn.backday.event.impl.player.MoveInputEvent;
 import cn.backday.utils.MinecraftInterface;
 import net.minecraft.util.MathHelper;
 
