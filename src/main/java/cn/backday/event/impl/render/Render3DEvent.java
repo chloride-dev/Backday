@@ -1,4 +1,4 @@
-package cn.backday.api.event.impl.render;
+package cn.backday.event.impl.render;
 
 import com.darkmagician6.eventapi.events.Event;
 

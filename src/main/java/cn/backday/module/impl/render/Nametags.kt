@@ -1,7 +1,7 @@
 package cn.backday.module.impl.render
 
 import cn.backday.Client
-import cn.backday.api.event.impl.render.Render2DEvent
+import cn.backday.event.impl.render.Render2DEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import com.darkmagician6.eventapi.EventTarget

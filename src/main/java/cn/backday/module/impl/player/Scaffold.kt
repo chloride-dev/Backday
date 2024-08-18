@@ -1,6 +1,6 @@
 package cn.backday.module.impl.player
 
-import cn.backday.api.event.impl.player.UpdateEvent
+import cn.backday.event.impl.player.UpdateEvent
 import cn.backday.component.impl.RotationComponent
 import cn.backday.component.impl.rotationcomponent.MovementFix
 import cn.backday.module.Module

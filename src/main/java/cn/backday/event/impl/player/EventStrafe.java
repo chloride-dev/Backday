@@ -1,4 +1,4 @@
-package cn.backday.api.event.impl.player;
+package cn.backday.event.impl.player;
 
 import cn.backday.api.event.impl.CancellableEvent;
 import net.minecraft.client.Minecraft;

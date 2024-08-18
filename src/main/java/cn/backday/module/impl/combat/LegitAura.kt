@@ -1,7 +1,7 @@
 package cn.backday.module.impl.combat
 import net.minecraft.util.ChatComponentText
 
-import cn.backday.api.event.impl.player.UpdateEvent
+import cn.backday.event.impl.player.UpdateEvent
 import cn.backday.component.impl.RotationComponent
 import cn.backday.component.impl.rotationcomponent.MovementFix
 import net.minecraft.util.EnumChatFormatting
