@@ -12,6 +12,8 @@ import cn.backday.utils.math.MathUtils
 import cn.backday.utils.math.vector.Vector2f
 import cn.backday.utils.misc.TargetUtil
 import cn.backday.utils.misc.TimerUtils
+import cn.backday.utils.math.vector.Vector2i
+import cn.backday.utils.rotation.RayCastUtil
 import cn.backday.utils.rotation.RotationUtil
 import cn.backday.value.impl.BoolValue
 import cn.backday.value.impl.FloatValue
@@ -26,7 +28,7 @@ import org.lwjgl.input.Keyboard
 
 object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Combat, Keyboard.KEY_R) {
     private val searchRange = FloatValue("Range", 4f, 0f, 8f)
-    private val cps = IntValue("CPS", 10, 1, 10)
+    private val cps = IntValue("CPS", 12, 1, 10)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
     private val maxRotationSpeed = IntValue("Max Rotation Speed", 60, 1, 180)
     private val minRotationSpeed = IntValue("Min Rotation Speed", 40, 1, 180)

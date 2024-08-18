@@ -20,7 +20,7 @@ import org.lwjgl.input.Keyboard
 object AimAssist : Module("AimAssist", "auto aim", ModuleCategory.Combat, Keyboard.KEY_F) {
     private val strengthMax = IntValue("Max Strength", 30, 1, 100)
     private val strengthMin = IntValue("Min Strength", 10, 1, 100)
-    private val onRotate = BoolValue("On Mouse Movement", true)
+    private val onRotate = BoolValue("On Mouse Movement", false)
 
     private var rotations: Vector2f? = null
     private var lastRotations: Vector2f? = null
@@ -35,6 +35,7 @@ object AimAssist : Module("AimAssist", "auto aim", ModuleCategory.Combat, Keyboa
         if (event.isPre) {
             lastRotations = rotations
             rotations = null
+
 
             if (mc.objectMouseOver.typeOfHit === MovingObjectPosition.MovingObjectType.ENTITY) return
 

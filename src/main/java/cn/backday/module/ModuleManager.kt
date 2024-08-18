@@ -9,7 +9,6 @@ import cn.backday.module.impl.misc.ModifierTest
 import cn.backday.module.impl.misc.Teams
 import cn.backday.module.impl.movement.LegitScaffold
 import cn.backday.module.impl.movement.Sprint
-import cn.backday.module.impl.movement.StrafeFix
 import cn.backday.module.impl.player.Scaffold
 import cn.backday.module.impl.render.ArrayListMod
 import cn.backday.module.impl.render.ESP
@@ -33,7 +32,7 @@ class ModuleManager {
         moduleList.add(Target)
         moduleList.add(ESP)
         moduleList.add(ModifierTest)
-        moduleList.add(StrafeFix)
+        //moduleList.add(StrafeFix)
         // Combat
         moduleList.add(AimAssist)
         moduleList.add(AutoClicker)

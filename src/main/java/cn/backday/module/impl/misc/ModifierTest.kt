@@ -1,8 +1,8 @@
 package cn.backday.module.impl.misc
 
-import cn.backday.api.event.impl.client.ChatReceivedEvent
-import cn.backday.api.event.impl.client.TabListUpdateEvent
-import cn.backday.api.event.impl.client.ScoreboardUpdateEvent
+import cn.backday.event.impl.client.ChatReceivedEvent
+import cn.backday.event.impl.client.TabListUpdateEvent
+import cn.backday.event.impl.client.ScoreboardUpdateEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
 import com.darkmagician6.eventapi.EventTarget
