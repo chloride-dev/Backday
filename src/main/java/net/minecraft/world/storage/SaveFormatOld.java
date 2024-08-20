@@ -86,7 +86,7 @@ public class SaveFormatOld implements ISaveFormat
                 }
                 catch (Exception exception1)
                 {
-                    logger.error((String)("Exception reading " + file2), (Throwable)exception1);
+                    //logger.error((String)("Exception reading " + file2), (Throwable)exception1);
                 }
             }
 
@@ -102,7 +102,7 @@ public class SaveFormatOld implements ISaveFormat
                 }
                 catch (Exception exception)
                 {
-                    logger.error((String)("Exception reading " + file2), (Throwable)exception);
+                    //logger.error((String)("Exception reading " + file2), (Throwable)exception);
                 }
             }
 
@@ -157,7 +157,7 @@ public class SaveFormatOld implements ISaveFormat
             }
             catch (Throwable throwable)
             {
-                logger.warn("Couldn\'t make new level", throwable);
+                //logger.warn("Couldn\'t make new level", throwable);
                 return false;
             }
         }
@@ -179,18 +179,18 @@ public class SaveFormatOld implements ISaveFormat
         }
         else
         {
-            logger.info("Deleting level " + saveName);
+            //logger.info("Deleting level " + saveName);
 
             for (int i = 1; i <= 5; ++i)
             {
-                logger.info("Attempt " + i + "...");
+                //logger.info("Attempt " + i + "...");
 
                 if (deleteFiles(file1.listFiles()))
                 {
                     break;
                 }
 
-                logger.warn("Unsuccessful in deleting contents.");
+                //logger.warn("Unsuccessful in deleting contents.");
 
                 if (i < 5)
                 {
@@ -218,17 +218,17 @@ public class SaveFormatOld implements ISaveFormat
         for (int i = 0; i < files.length; ++i)
         {
             File file1 = files[i];
-            logger.debug("Deleting " + file1);
+            //logger.debug("Deleting " + file1);
 
             if (file1.isDirectory() && !deleteFiles(file1.listFiles()))
             {
-                logger.warn("Couldn\'t delete directory " + file1);
+                //logger.warn("Couldn\'t delete directory " + file1);
                 return false;
             }
 
             if (!file1.delete())
             {
-                logger.warn("Couldn\'t delete file " + file1);
+                //logger.warn("Couldn\'t delete file " + file1);
                 return false;
             }
         }

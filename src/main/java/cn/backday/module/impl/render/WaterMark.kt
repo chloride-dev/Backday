@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.GlStateManager
 import net.minecraft.util.ResourceLocation
 import java.awt.Color
 
-object WaterMark : Module("WaterMark", "water mark", ModuleCategory.Render) {
+object WaterMark : Module("Watermark", "water mark", ModuleCategory.Render,false) {
     private val logo = ResourceLocation("Backday/icons/icon_100.png")
 
     override fun onInitialize() {

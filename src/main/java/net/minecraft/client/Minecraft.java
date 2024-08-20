@@ -356,7 +356,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         this.proxy = gameConfig.userInfo.proxy == null ? Proxy.NO_PROXY : gameConfig.userInfo.proxy;
         this.sessionService = (new YggdrasilAuthenticationService(gameConfig.userInfo.proxy, UUID.randomUUID().toString())).createMinecraftSessionService();
         this.session = gameConfig.userInfo.session;
-        logger.info("Starting Backday: {}", this.session.getUsername());
+        //logger.info("Starting Backday: {}", this.session.getUsername());
         this.isDemo = gameConfig.gameInfo.isDemo;
         this.displayWidth = gameConfig.displayInfo.width > 0 ? gameConfig.displayInfo.width : 1;
         this.displayHeight = gameConfig.displayInfo.height > 0 ? gameConfig.displayInfo.height : 1;
@@ -557,18 +557,18 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             this.stream = new TwitchStream(this, Iterables.getFirst(this.twitchDetails.get("twitch_access_token"), null));
         } catch (Throwable throwable) {
             this.stream = new NullStream(throwable);
-            logger.error("Couldn't initialize twitch stream");
+            //logger.error("Couldn't initialize twitch stream");
         }
     }
 
     private void createDisplay() throws LWJGLException {
         Display.setResizable(true);
-        Display.setTitle("Powered by Chloride Development Team");
+        Display.setTitle("Hello Minecraft! Launcher v3.5.7");
 
         try {
             Display.create((new PixelFormat()).withDepthBits(24));
         } catch (LWJGLException lwjglexception) {
-            logger.error("Couldn't set pixel format", lwjglexception);
+            //logger.error("Couldn't set pixel format", lwjglexception);
 
             try {
                 Thread.sleep(1000L);
@@ -601,14 +601,17 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
             InputStream inputstream = null;
             InputStream inputstream1 = null;
             try {
-                inputstream = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_16.png"));
-                inputstream1 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_32.png"));
+
+//                inputstream = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_16.png"));
+//                inputstream1 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_32.png"));
+                inputstream = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/hmcl32.png"));
+                inputstream1 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/hmcl32.png"));
 
                 if (inputstream != null && inputstream1 != null) {
                     Display.setIcon(new ByteBuffer[]{this.readImageToBuffer(inputstream), this.readImageToBuffer(inputstream1)});
                 }
             } catch (IOException ioexception) {
-                logger.error("Couldn't set icon", ioexception);
+                //logger.error("Couldn't set icon", ioexception);
             } finally {
                 IOUtils.closeQuietly(inputstream);
                 IOUtils.closeQuietly(inputstream1);
@@ -908,7 +911,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
     public void shutdownMinecraftApplet() {
         try {
             this.stream.shutdownStream();
-            logger.info("Stopping!");
+            //logger.info("Stopping!");
 
             try {
                 this.loadWorld(null);

@@ -74,7 +74,7 @@ public class AnvilChunkLoader implements IChunkLoader, IThreadedFileIO
     {
         if (!p_75822_4_.hasKey("Level", 10))
         {
-            logger.error("Chunk file at " + x + "," + z + " is missing level data, skipping");
+            //logger.error("Chunk file at " + x + "," + z + " is missing level data, skipping");
             return null;
         }
         else
@@ -83,7 +83,7 @@ public class AnvilChunkLoader implements IChunkLoader, IThreadedFileIO
 
             if (!nbttagcompound.hasKey("Sections", 9))
             {
-                logger.error("Chunk file at " + x + "," + z + " is missing block data, skipping");
+                //logger.error("Chunk file at " + x + "," + z + " is missing block data, skipping");
                 return null;
             }
             else
@@ -92,7 +92,7 @@ public class AnvilChunkLoader implements IChunkLoader, IThreadedFileIO
 
                 if (!chunk.isAtLocation(x, z))
                 {
-                    logger.error("Chunk file at " + x + "," + z + " is in the wrong location; relocating. (Expected " + x + ", " + z + ", got " + chunk.xPosition + ", " + chunk.zPosition + ")");
+                    //logger.error("Chunk file at " + x + "," + z + " is in the wrong location; relocating. (Expected " + x + ", " + z + ", got " + chunk.xPosition + ", " + chunk.zPosition + ")");
                     nbttagcompound.setInteger("xPos", x);
                     nbttagcompound.setInteger("zPos", z);
                     chunk = this.readChunkFromNBT(worldIn, nbttagcompound);
@@ -117,7 +117,7 @@ public class AnvilChunkLoader implements IChunkLoader, IThreadedFileIO
         }
         catch (Exception exception)
         {
-            logger.error((String)"Failed to save chunk", (Throwable)exception);
+            //logger.error((String)"Failed to save chunk", (Throwable)exception);
         }
     }
 
@@ -140,7 +140,7 @@ public class AnvilChunkLoader implements IChunkLoader, IThreadedFileIO
         {
             if (this.field_183014_e)
             {
-                logger.info("ThreadedAnvilChunkStorage ({}): All chunks are saved", new Object[] {this.chunkSaveLocation.getName()});
+                //logger.info("ThreadedAnvilChunkStorage ({}): All chunks are saved", new Object[] {this.chunkSaveLocation.getName()});
             }
 
             return false;
@@ -163,7 +163,7 @@ public class AnvilChunkLoader implements IChunkLoader, IThreadedFileIO
                     }
                     catch (Exception exception)
                     {
-                        logger.error((String)"Failed to save chunk", (Throwable)exception);
+                        //logger.error((String)"Failed to save chunk", (Throwable)exception);
                     }
                 }
 

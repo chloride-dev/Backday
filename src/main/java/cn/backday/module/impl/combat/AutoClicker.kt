@@ -3,6 +3,7 @@ package cn.backday.module.impl.combat
 import cn.backday.event.impl.game.TickEvent
 import cn.backday.module.Module
 import cn.backday.module.ModuleCategory
+import cn.backday.event.impl.player.UpdateEvent
 import cn.backday.utils.math.CPSUtils
 import cn.backday.utils.misc.TimerUtils
 import cn.backday.value.impl.BoolValue
@@ -11,6 +12,7 @@ import cn.backday.value.impl.IntValue
 import com.darkmagician6.eventapi.EventTarget
 import net.minecraft.client.settings.KeyBinding
 import net.minecraft.item.ItemSword
+import net.minecraft.util.EnumChatFormatting
 import org.lwjgl.input.Mouse
 
 object AutoClicker : Module("AutoClicker", "auto click", ModuleCategory.Combat , true) {
@@ -22,7 +24,7 @@ object AutoClicker : Module("AutoClicker", "auto click", ModuleCategory.Combat ,
     private val timer = TimerUtils()
 
     @EventTarget
-    private fun onTick(event: TickEvent) {
+    fun onTick(event: TickEvent) {
         if (mc.currentScreen == null && Mouse.isButtonDown(0)) {
             if (!blockHit.get() && mc.thePlayer.isUsingItem) return
 

@@ -14,7 +14,7 @@ import java.nio.FloatBuffer
 import org.lwjgl.BufferUtils
 import org.lwjgl.input.Keyboard
 
-object Nametags : Module("Nametags", "Displays player nametags", ModuleCategory.Render, Keyboard.KEY_I) {
+object Nametags : Module("NameTags", "Displays player nametags", ModuleCategory.Render, Keyboard.KEY_I) {
     //private val mc: Minecraft = Minecraft.getMinecraft()
 
     @EventTarget

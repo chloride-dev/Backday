@@ -80,7 +80,7 @@ public class ChatController
                 if (ErrorCode.failed(errorcode))
                 {
                     String s = ErrorCode.getString(errorcode);
-                    ChatController.this.func_152995_h(String.format("Error shutting down the Twitch sdk: %s", new Object[] {s}));
+                    //ChatController.this.func_152995_h(String.format("Error shutting down the Twitch sdk: %s", new Object[] {s}));
                 }
 
                 ChatController.this.func_175985_a(ChatController.ChatState.Uninitialized);
@@ -88,7 +88,7 @@ public class ChatController
             else
             {
                 ChatController.this.func_175985_a(ChatController.ChatState.Initialized);
-                ChatController.this.func_152995_h(String.format("Error shutting down Twith chat: %s", new Object[] {p_chatShutdownCallback_1_}));
+                //ChatController.this.func_152995_h(String.format("Error shutting down Twith chat: %s", new Object[] {p_chatShutdownCallback_1_}));
             }
 
             try
@@ -190,7 +190,7 @@ public class ChatController
             {
                 this.func_175985_a(ChatController.ChatState.Uninitialized);
                 String s1 = ErrorCode.getString(errorcode);
-                this.func_152995_h(String.format("Error initializing Twitch sdk: %s", new Object[] {s1}));
+                //this.func_152995_h(String.format("Error initializing Twitch sdk: %s", new Object[] {s1}));
                 return false;
             }
             else
@@ -219,7 +219,7 @@ public class ChatController
                     this.field_175992_e.shutdown();
                     this.func_175985_a(ChatController.ChatState.Uninitialized);
                     String s = ErrorCode.getString(errorcode);
-                    this.func_152995_h(String.format("Error initializing Twitch chat: %s", new Object[] {s}));
+                    //this.func_152995_h(String.format("Error initializing Twitch chat: %s", new Object[] {s}));
                     return false;
                 }
                 else
@@ -244,7 +244,7 @@ public class ChatController
         }
         else if (this.field_175998_i.containsKey(p_175987_1_))
         {
-            this.func_152995_h("Already in channel: " + p_175987_1_);
+            //this.func_152995_h("Already in channel: " + p_175987_1_);
             return false;
         }
         else if (p_175987_1_ != null && !p_175987_1_.equals(""))
@@ -274,7 +274,7 @@ public class ChatController
         }
         else if (!this.field_175998_i.containsKey(p_175991_1_))
         {
-            this.func_152995_h("Not in channel: " + p_175991_1_);
+            //this.func_152995_h("Not in channel: " + p_175991_1_);
             return false;
         }
         else
@@ -297,7 +297,7 @@ public class ChatController
             if (ErrorCode.failed(errorcode))
             {
                 String s = ErrorCode.getString(errorcode);
-                this.func_152995_h(String.format("Error shutting down chat: %s", new Object[] {s}));
+                //this.func_152995_h(String.format("Error shutting down chat: %s", new Object[] {s}));
                 return false;
             }
             else
@@ -342,7 +342,7 @@ public class ChatController
             if (ErrorCode.failed(errorcode))
             {
                 String s = ErrorCode.getString(errorcode);
-                this.func_152995_h(String.format("Error flushing chat events: %s", new Object[] {s}));
+                //this.func_152995_h(String.format("Error flushing chat events: %s", new Object[] {s}));
             }
         }
     }
@@ -355,7 +355,7 @@ public class ChatController
         }
         else if (!this.field_175998_i.containsKey(p_175986_1_))
         {
-            this.func_152995_h("Not in channel: " + p_175986_1_);
+            //this.func_152995_h("Not in channel: " + p_175986_1_);
             return false;
         }
         else
@@ -396,7 +396,7 @@ public class ChatController
                 if (ErrorCode.failed(errorcode))
                 {
                     String s = ErrorCode.getString(errorcode);
-                    this.func_152995_h(String.format("Error trying to download emoticon data: %s", new Object[] {s}));
+                    //this.func_152995_h(String.format("Error trying to download emoticon data: %s", new Object[] {s}));
                 }
             }
         }
@@ -425,7 +425,7 @@ public class ChatController
             }
             else
             {
-                this.func_152995_h("Error preparing emoticon data: " + ErrorCode.getString(errorcode));
+                //this.func_152995_h("Error preparing emoticon data: " + ErrorCode.getString(errorcode));
             }
         }
     }
@@ -454,14 +454,14 @@ public class ChatController
             }
             else
             {
-                this.func_152995_h("Error clearing emoticon data: " + ErrorCode.getString(errorcode));
+                //this.func_152995_h("Error clearing emoticon data: " + ErrorCode.getString(errorcode));
             }
         }
     }
 
     protected void func_152995_h(String p_152995_1_)
     {
-        LOGGER.error(TwitchStream.STREAM_MARKER, "[Chat controller] {}", new Object[] {p_152995_1_});
+        //LOGGER.error(TwitchStream.STREAM_MARKER, "[Chat controller] {}", new Object[] {p_152995_1_});
     }
 
     public class ChatChannelListener implements IChatChannelListener
@@ -501,7 +501,7 @@ public class ChatController
             if (ErrorCode.failed(errorcode))
             {
                 String s = ErrorCode.getString(errorcode);
-                ChatController.this.func_152995_h(String.format("Error connecting: %s", new Object[] {s}));
+                //ChatController.this.func_152995_h(String.format("Error connecting: %s", new Object[] {s}));
                 this.func_176036_d(this.field_176048_a);
                 return false;
             }
@@ -524,7 +524,7 @@ public class ChatController
                     if (ErrorCode.failed(errorcode))
                     {
                         String s = ErrorCode.getString(errorcode);
-                        ChatController.this.func_152995_h(String.format("Error disconnecting: %s", new Object[] {s}));
+                        //ChatController.this.func_152995_h(String.format("Error disconnecting: %s", new Object[] {s}));
                         return false;
                     }
 
@@ -613,7 +613,7 @@ public class ChatController
                 if (ErrorCode.failed(errorcode))
                 {
                     String s = ErrorCode.getString(errorcode);
-                    ChatController.this.func_152995_h(String.format("Error sending chat message: %s", new Object[] {s}));
+                    //ChatController.this.func_152995_h(String.format("Error sending chat message: %s", new Object[] {s}));
                     return false;
                 }
                 else
@@ -634,7 +634,7 @@ public class ChatController
                     if (ErrorCode.failed(errorcode))
                     {
                         String s = ErrorCode.getString(errorcode);
-                        ChatController.this.func_152995_h(String.format("Error trying to download badge data: %s", new Object[] {s}));
+                        //ChatController.this.func_152995_h(String.format("Error trying to download badge data: %s", new Object[] {s}));
                     }
                 }
             }
@@ -663,7 +663,7 @@ public class ChatController
                 }
                 else
                 {
-                    ChatController.this.func_152995_h("Error preparing badge data: " + ErrorCode.getString(errorcode));
+                    //ChatController.this.func_152995_h("Error preparing badge data: " + ErrorCode.getString(errorcode));
                 }
             }
         }
@@ -692,7 +692,7 @@ public class ChatController
                 }
                 else
                 {
-                    ChatController.this.func_152995_h("Error releasing badge data: " + ErrorCode.getString(errorcode));
+                    //ChatController.this.func_152995_h("Error releasing badge data: " + ErrorCode.getString(errorcode));
                 }
             }
         }

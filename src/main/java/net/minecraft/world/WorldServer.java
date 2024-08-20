@@ -826,7 +826,7 @@ public class WorldServer extends World implements IThreadListener
             }
             else
             {
-                logger.warn("Unable to find spawn biome");
+                //logger.warn("Unable to find spawn biome");
             }
 
             int l = 0;

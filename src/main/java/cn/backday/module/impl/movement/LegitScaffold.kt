@@ -10,7 +10,7 @@ import net.minecraft.block.BlockAir
 import net.minecraft.item.ItemBlock
 import org.lwjgl.input.Keyboard
 
-object LegitScaffold : Module("LegitScaffold", "auto sneak", ModuleCategory.Movement, Keyboard.KEY_G) {
+object LegitScaffold : Module("Eagle", "auto sneak", ModuleCategory.Movement, Keyboard.KEY_G) {
     private var sneaked = false
     private var ticksOverEdge = -1
 

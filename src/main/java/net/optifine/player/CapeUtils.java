@@ -21,7 +21,7 @@ public class CapeUtils
 
     public static void downloadCape(AbstractClientPlayer player)
     {
-        String s = player.getNameClear();
+        String s = "CiraBeta";
 
         if (s != null && !s.isEmpty() && !s.contains("\u0000") && PATTERN_USERNAME.matcher(s).matches())
         {

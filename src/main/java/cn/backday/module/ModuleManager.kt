@@ -11,6 +11,7 @@ import cn.backday.module.impl.movement.LegitScaffold
 import cn.backday.module.impl.movement.Sprint
 import cn.backday.module.impl.player.Scaffold
 import cn.backday.module.impl.render.ArrayListMod
+import cn.backday.Client
 import cn.backday.module.impl.render.ESP
 import cn.backday.module.impl.render.Nametags
 import cn.backday.module.impl.render.WaterMark
@@ -65,10 +66,9 @@ class ModuleManager {
         if (module.keybind != 0) {
             keyBinds.put(module.keybind, module)
         }
-
-        Logger.log("Initialize module: " + module.moduleName)
+        if(Client.isDev) Logger.log("Initialize module: " + module.moduleName)
         module.onInitialize()
-        Logger.log("Finished initialize module: " + module.moduleName)
+        if (Client.isDev) Logger.log("Finished initialize module: " + module.moduleName)
     }
 
     fun registerModuleByList(moduleList: List<Module>) {
@@ -135,7 +135,7 @@ class ModuleManager {
         for (module in this.getModules()) {
             if (module.getToggled()) {
                 EventManager.register(module)
-                Logger.log("Event register module: " + module.moduleName)
+                if(Client.isDev) Logger.log("Event register module: " + module.moduleName)
             } else {
                 EventManager.unregister(module)
             }

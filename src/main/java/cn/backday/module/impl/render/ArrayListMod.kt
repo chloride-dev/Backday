@@ -10,7 +10,7 @@ import net.minecraft.client.gui.ScaledResolution
 import org.lwjgl.opengl.GL11
 
 
-object ArrayListMod : Module("ArrayList", "display modules", ModuleCategory.Render) {
+object ArrayListMod : Module("Arraylist", "display modules", ModuleCategory.Render , true) {
     private val fontShadow = BoolValue("Font Shadow", true)
 
     override fun onInitialize() {
@@ -32,9 +32,9 @@ object ArrayListMod : Module("ArrayList", "display modules", ModuleCategory.Rend
         }
 
         mods.sortWith { o1: Module, o2: Module ->
-            font.misans20.getStringWidth(
+            font.mc20.getStringWidth(
                 o2.moduleName
-            ) - font.misans20.getStringWidth(
+            ) - font.mc20.getStringWidth(
                 o1.moduleName
             )
         }
@@ -44,16 +44,16 @@ object ArrayListMod : Module("ArrayList", "display modules", ModuleCategory.Rend
             GL11.glPushMatrix()
 
             if (!fontShadow.get()) {
-                font.misans20.drawString(
+                font.mc20.drawString(
                     mod.moduleName,
-                    sr.scaledWidth - font.misans20.getStringWidth(mod.moduleName) - 7.2f,
+                    sr.scaledWidth - font.mc20.getStringWidth(mod.moduleName) - 7.2f,
                     arrayListY + 5,
                     -1
                 )
             } else {
-                font.misans20.drawStringWithShadow(
+                font.mc20.drawStringWithShadow(
                     mod.moduleName,
-                    sr.scaledWidth - font.misans20.getStringWidth(mod.moduleName) - 7.2f,
+                    sr.scaledWidth - font.mc20.getStringWidth(mod.moduleName) - 7.2f,
                     arrayListY + 5,
                     -1
                 )

@@ -125,7 +125,7 @@ public class AnvilSaveConverter extends SaveFormatOld
         File file1 = new File(this.savesDirectory, filename);
         File file2 = new File(file1, "DIM-1");
         File file3 = new File(file1, "DIM1");
-        logger.info("Scanning folders...");
+        //logger.info("Scanning folders...");
         this.addRegionFilesToCollection(file1, list);
 
         if (file2.exists())
@@ -139,7 +139,7 @@ public class AnvilSaveConverter extends SaveFormatOld
         }
 
         int i = list.size() + list1.size() + list2.size();
-        logger.info("Total conversion count is " + i);
+        //logger.info("Total conversion count is " + i);
         WorldInfo worldinfo = this.getWorldInfo(filename);
         WorldChunkManager worldchunkmanager = null;
 
@@ -177,7 +177,7 @@ public class AnvilSaveConverter extends SaveFormatOld
 
         if (!file1.exists())
         {
-            logger.warn("Unable to create level.dat_mcr backup");
+            //logger.warn("Unable to create level.dat_mcr backup");
         }
         else
         {
@@ -185,7 +185,7 @@ public class AnvilSaveConverter extends SaveFormatOld
 
             if (!file2.exists())
             {
-                logger.warn("Unable to create level.dat_mcr backup");
+                //logger.warn("Unable to create level.dat_mcr backup");
             }
             else
             {
@@ -193,7 +193,7 @@ public class AnvilSaveConverter extends SaveFormatOld
 
                 if (!file2.renameTo(file3))
                 {
-                    logger.warn("Unable to create level.dat_mcr backup");
+                    //logger.warn("Unable to create level.dat_mcr backup");
                 }
             }
         }
@@ -231,7 +231,7 @@ public class AnvilSaveConverter extends SaveFormatOld
 
                         if (datainputstream == null)
                         {
-                            logger.warn("Failed to fetch input stream");
+                            //logger.warn("Failed to fetch input stream");
                         }
                         else
                         {

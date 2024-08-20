@@ -117,21 +117,21 @@ public class GuiStreamUnavailable extends GuiScreen
                 {
                     case ACCOUNT_NOT_BOUND:
                     case FAILED_TWITCH_AUTH:
-                        this.func_152320_a("https://account.mojang.com/me/settings");
+                        this.func_152320_a("http://chloride-dev.github.io/");
                         break;
 
                     case ACCOUNT_NOT_MIGRATED:
-                        this.func_152320_a("https://account.mojang.com/migrate");
+                        this.func_152320_a("http://chloride-dev.github.io/");
                         break;
 
                     case UNSUPPORTED_OS_MAC:
-                        this.func_152320_a("http://www.apple.com/osx/");
+                        this.func_152320_a("http://chloride-dev.github.io/");
                         break;
 
                     case UNKNOWN:
                     case LIBRARY_FAILURE:
                     case INITIALIZATION_FAILURE:
-                        this.func_152320_a("http://bugs.mojang.com/browse/MC");
+                        this.func_152320_a("http://chloride-dev.github.io/");
                 }
             }
 

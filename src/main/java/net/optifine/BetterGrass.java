@@ -134,7 +134,7 @@ public class BetterGrass
         }
         catch (IOException ioexception)
         {
-            Config.warn("Error reading: " + s + ", " + ioexception.getClass().getName() + ": " + ioexception.getMessage());
+            //Config.warn("Error reading: " + s + ", " + ioexception.getClass().getName() + ": " + ioexception.getMessage());
         }
     }
 
@@ -151,7 +151,7 @@ public class BetterGrass
 
         if (!Config.hasResource(resourcelocation))
         {
-            Config.warn("BetterGrass texture not found: " + resourcelocation);
+            //Config.warn("BetterGrass texture not found: " + resourcelocation);
             s = textureDefault;
         }
 

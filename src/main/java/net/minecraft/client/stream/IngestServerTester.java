@@ -103,7 +103,7 @@ public class IngestServerTester
         {
             if (ErrorCode.failed(p_stopCallback_1_))
             {
-                System.out.println("IngestTester.stopCallback failed to stop - " + IngestServerTester.this.field_153059_q.serverName + ": " + p_stopCallback_1_.toString());
+                //System.out.println("IngestTester.stopCallback failed to stop - " + IngestServerTester.this.field_153059_q.serverName + ": " + p_stopCallback_1_.toString());
             }
 
             IngestServerTester.this.field_176007_z = false;
@@ -341,7 +341,7 @@ public class IngestServerTester
             if (ErrorCode.failed(errorcode))
             {
                 this.field_176005_A.stopCallback(ErrorCode.TTV_EC_SUCCESS);
-                System.out.println("Stop failed: " + errorcode.toString());
+                //System.out.println("Stop failed: " + errorcode.toString());
             }
 
             this.field_153045_c.pollStats();

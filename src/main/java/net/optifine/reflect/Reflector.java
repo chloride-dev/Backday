@@ -1111,7 +1111,7 @@ public class Reflector
 
     private static boolean logEntry(String str)
     {
-        LOGGER.info("[OptiFine] " + str);
+        //LOGGER.info("[OptiFine] " + str);
         return true;
     }
 
@@ -1121,7 +1121,7 @@ public class Reflector
         {
             public void resolve()
             {
-                Reflector.LOGGER.info("[OptiFine] " + str);
+                //Reflector.LOGGER.info("[OptiFine] " + str);
             }
         };
         ReflectorResolver.register(iresolvable);

@@ -19,7 +19,7 @@ import net.minecraft.util.BlockPos
 import net.minecraft.util.EnumFacing
 import org.lwjgl.input.Keyboard
 
-object Scaffold : Module("Scaffold", "Simulate sneaking while placing blocks", ModuleCategory.Player) {
+object Scaffold : Module("Scaffold", "Simulate sneaking while placing blocks", ModuleCategory.Player,Keyboard.KEY_B) {
     private val placeRange = FloatValue("Place Range", 1f, 1f, 6f)
     private val rotationSpeed = FloatValue("Rotation Speed", 180f, 1f, 360f)
 

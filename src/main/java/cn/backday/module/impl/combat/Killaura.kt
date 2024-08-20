@@ -22,7 +22,7 @@ import net.minecraft.item.ItemFishingRod
 import net.minecraft.item.ItemSword
 import org.lwjgl.input.Keyboard
 
-object Killaura : Module("KillAura", "Automatically attack entities while keeping player view steady", ModuleCategory.Combat) {
+object Killaura : Module("KillAura", "Automatically attack entities while keeping player view steady", ModuleCategory.Combat,Keyboard.KEY_K) {
     private val searchRange = FloatValue("Range", 4f, 0f, 8f)
     private val cps = IntValue("CPS", 12, 1, 20)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)

@@ -54,17 +54,10 @@ public class CrashReport
      */
     private void populateEnvironment()
     {
-        this.theReportCategory.addCrashSectionCallable("Minecraft Version", new Callable<String>()
-        {
-            public String call()
-            {
-                return "1.8.9";
-            }
-        });
         this.theReportCategory.addCrashSectionCallable("Backday Version", new Callable<String>()
         {
             public String call() throws Exception {
-                return Client.INSTANCE.getClientBranch() + "/" + Client.INSTANCE.getClientBranch();
+                return "(" + Client.INSTANCE.getClientCommit() + "/" + Client.INSTANCE.getClientBranch() + ")";
             }
         });
         this.theReportCategory.addCrashSectionCallable("Operating System", new Callable<String>()

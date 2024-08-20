@@ -26,7 +26,7 @@ import net.minecraft.item.ItemSword
 import org.lwjgl.input.Keyboard
 
 
-object LegitAura : Module("LegitAura", "killaura but legit", ModuleCategory.Combat, Keyboard.KEY_R) {
+object LegitAura : Module("Legit KillAura", "killaura but legit", ModuleCategory.Combat, Keyboard.KEY_R) {
     private val searchRange = FloatValue("Range", 4f, 0f, 8f)
     private val cps = IntValue("CPS", 12, 1, 10)
     private val cpsRange = FloatValue("CPS Random Strength", 1f, 0.1f, 5f)
