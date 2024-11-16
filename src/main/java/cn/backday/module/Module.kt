@@ -2,9 +2,11 @@ package cn.backday.module
 
 import cn.backday.Client
 import cn.backday.ui.font.FontUtil
+import cn.backday.utils.packet.PacketUtils
 import cn.backday.value.Value
 import com.darkmagician6.eventapi.EventManager
 import net.minecraft.client.Minecraft
+import net.minecraft.network.Packet
 
 open class Module {
     val mc: Minecraft = Minecraft.getMinecraft()
@@ -58,6 +60,13 @@ open class Module {
     open fun onEnable() {}
 
     open fun onDisable() {}
+
+    fun sendPacket(packet: Packet<*>, triggerEvent: Boolean = true) {
+        PacketUtils.sendPacket(packet, triggerEvent)
+    }
+
+    fun sendPackets(vararg packets: Packet<*>, triggerEvent: Boolean = true) =
+        packets.forEach { PacketUtils.sendPacket(it, triggerEvent) }
 
     fun toggle() {
         try {

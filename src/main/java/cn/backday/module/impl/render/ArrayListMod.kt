@@ -32,9 +32,9 @@ object ArrayListMod : Module("Arraylist", "display modules", ModuleCategory.Rend
         }
 
         mods.sortWith { o1: Module, o2: Module ->
-            font.mc20.getStringWidth(
+            font.misans20.getStringWidth(
                 o2.moduleName
-            ) - font.mc20.getStringWidth(
+            ) - font.misans20.getStringWidth(
                 o1.moduleName
             )
         }
@@ -44,16 +44,16 @@ object ArrayListMod : Module("Arraylist", "display modules", ModuleCategory.Rend
             GL11.glPushMatrix()
 
             if (!fontShadow.get()) {
-                font.mc20.drawString(
+                font.misans20.drawString(
                     mod.moduleName,
-                    sr.scaledWidth - font.mc20.getStringWidth(mod.moduleName) - 7.2f,
+                    sr.scaledWidth - font.misans20.getStringWidth(mod.moduleName) - 7.2f,
                     arrayListY + 5,
                     -1
                 )
             } else {
-                font.mc20.drawStringWithShadow(
+                font.misans20.drawStringWithShadow(
                     mod.moduleName,
-                    sr.scaledWidth - font.mc20.getStringWidth(mod.moduleName) - 7.2f,
+                    sr.scaledWidth - font.misans20.getStringWidth(mod.moduleName) - 7.2f,
                     arrayListY + 5,
                     -1
                 )
