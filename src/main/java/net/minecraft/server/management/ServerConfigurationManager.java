@@ -134,7 +134,7 @@ public abstract class ServerConfigurationManager
             s1 = netManager.getRemoteAddress().toString();
         }
 
-        logger.info(playerIn.getName() + "[" + s1 + "] logged in with entity id " + playerIn.getEntityId() + " at (" + playerIn.posX + ", " + playerIn.posY + ", " + playerIn.posZ + ")");
+        //logger.info(playerIn.getName() + "[" + s1 + "] logged in with entity id " + playerIn.getEntityId() + " at (" + playerIn.posX + ", " + playerIn.posY + ", " + playerIn.posZ + ")");
         WorldServer worldserver = this.mcServer.worldServerForDimension(playerIn.dimension);
         WorldInfo worldinfo = worldserver.getWorldInfo();
         BlockPos blockpos = worldserver.getSpawnPoint();
@@ -285,7 +285,7 @@ public abstract class ServerConfigurationManager
         {
             playerIn.readFromNBT(nbttagcompound);
             nbttagcompound1 = nbttagcompound;
-            logger.debug("loading single player");
+            //logger.debug("loading single player");
         }
         else
         {
@@ -348,7 +348,7 @@ public abstract class ServerConfigurationManager
         if (playerIn.ridingEntity != null)
         {
             worldserver.removePlayerEntityDangerously(playerIn.ridingEntity);
-            logger.debug("removing player mount");
+            //logger.debug("removing player mount");
         }
 
         worldserver.removeEntity(playerIn);

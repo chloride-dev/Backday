@@ -225,7 +225,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
     {
         if (this.getActiveAnvilConverter().isOldMapFormat(worldNameIn))
         {
-            logger.info("Converting map!");
+            //logger.info("Converting map!");
             this.setUserMessage("menu.convertingLevel");
             this.getActiveAnvilConverter().convertMapFormat(worldNameIn, new IProgressUpdate()
             {
@@ -241,7 +241,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
                     if (System.currentTimeMillis() - this.startTime >= 1000L)
                     {
                         this.startTime = System.currentTimeMillis();
-                        MinecraftServer.logger.info("Converting... " + progress + "%");
+                        //MinecraftServer.logger.info("Converting... " + progress + "%");
                     }
                 }
                 public void setDoneWorking()
@@ -357,7 +357,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
         int i1 = 0;
         this.setUserMessage("menu.generatingTerrain");
         int j1 = 0;
-        logger.info("Preparing start region for level " + j1);
+        //logger.info("Preparing start region for level " + j1);
         WorldServer worldserver = this.worldServers[j1];
         BlockPos blockpos = worldserver.getSpawnPoint();
         long k1 = getCurrentTimeMillis();
@@ -425,7 +425,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
     {
         this.currentTask = message;
         this.percentDone = percent;
-        logger.info(message + ": " + percent + "%");
+        //logger.info(message + ": " + percent + "%");
     }
 
     /**
@@ -450,7 +450,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
                 {
                     if (!dontLog)
                     {
-                        logger.info("Saving chunks for level \'" + worldserver.getWorldInfo().getWorldName() + "\'/" + worldserver.provider.getDimensionName());
+                        //logger.info("Saving chunks for level \'" + worldserver.getWorldInfo().getWorldName() + "\'/" + worldserver.provider.getDimensionName());
                     }
 
                     try
@@ -459,7 +459,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
                     }
                     catch (MinecraftException minecraftexception)
                     {
-                        logger.warn(minecraftexception.getMessage());
+                        //logger.warn(minecraftexception.getMessage());
                     }
                 }
             }
@@ -473,7 +473,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
     {
         if (!this.worldIsBeingDeleted)
         {
-            logger.info("Stopping server");
+            //logger.info("Stopping server");
 
             if (this.getNetworkSystem() != null)
             {
@@ -482,14 +482,14 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
 
             if (this.serverConfigManager != null)
             {
-                logger.info("Saving players");
+                //logger.info("Saving players");
                 this.serverConfigManager.saveAllPlayerData();
                 this.serverConfigManager.removeAllPlayers();
             }
 
             if (this.worldServers != null)
             {
-                logger.info("Saving worlds");
+                //logger.info("Saving worlds");
                 this.saveAllWorlds(false);
 
                 for (int i = 0; i < this.worldServers.length; ++i)
@@ -543,14 +543,14 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
 
                     if (j > 2000L && this.currentTime - this.timeOfLastWarning >= 15000L)
                     {
-                        logger.warn("Can\'t keep up! Did the system time change, or is the server overloaded? Running {}ms behind, skipping {} tick(s)", new Object[] {Long.valueOf(j), Long.valueOf(j / 50L)});
+                        //logger.warn("Can\'t keep up! Did the system time change, or is the server overloaded? Running {}ms behind, skipping {} tick(s)", new Object[] {Long.valueOf(j), Long.valueOf(j / 50L)});
                         j = 2000L;
                         this.timeOfLastWarning = this.currentTime;
                     }
 
                     if (j < 0L)
                     {
-                        logger.warn("Time ran backwards! Did the system time change?");
+                        //logger.warn("Time ran backwards! Did the system time change?");
                         j = 0L;
                     }
 
@@ -582,7 +582,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
         }
         catch (Throwable throwable1)
         {
-            logger.error("Encountered an unexpected exception", throwable1);
+            //logger.error("Encountered an unexpected exception", throwable1);
             CrashReport crashreport = null;
 
             if (throwable1 instanceof ReportedException)
@@ -598,11 +598,11 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
 
             if (crashreport.saveToFile(file1))
             {
-                logger.error("This crash report has been saved to: " + file1.getAbsolutePath());
+                //logger.error("This crash report has been saved to: " + file1.getAbsolutePath());
             }
             else
             {
-                logger.error("We were unable to save this crash report to disk.");
+                //logger.error("We were unable to save this crash report to disk.");
             }
 
             this.finalTick(crashreport);
@@ -616,7 +616,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
             }
             catch (Throwable throwable)
             {
-                logger.error("Exception stopping the server", throwable);
+                //logger.error("Exception stopping the server", throwable);
             }
             finally
             {
@@ -644,7 +644,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
             }
             catch (Exception exception)
             {
-                logger.error((String)"Couldn\'t load server icon", (Throwable)exception);
+               // logger.error((String)"Couldn\'t load server icon", (Throwable)exception);
             }
             finally
             {
@@ -835,7 +835,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
      */
     public void logWarning(String msg)
     {
-        logger.warn(msg);
+        //logger.warn(msg);
     }
 
     /**
@@ -988,7 +988,7 @@ public abstract class MinecraftServer implements Runnable, ICommandSender, IThre
      */
     public void addChatMessage(IChatComponent component)
     {
-        logger.info(component.getUnformattedText());
+        //logger.info(component.getUnformattedText());
     }
 
     /**

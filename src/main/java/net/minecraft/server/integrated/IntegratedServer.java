@@ -204,13 +204,13 @@ public class IntegratedServer extends MinecraftServer
      */
     protected boolean startServer() throws IOException
     {
-        logger.info("Starting integrated minecraft server version 1.9");
+        //logger.info("Starting integrated minecraft server version 1.9");
         this.setOnlineMode(true);
         this.setCanSpawnAnimals(true);
         this.setCanSpawnNPCs(true);
         this.setAllowPvp(true);
         this.setAllowFlight(true);
-        logger.info("Generating keypair");
+        //logger.info("Generating keypair");
         this.setKeyPair(CryptManager.generateKeyPair());
 
         if (Reflector.FMLCommonHandler_handleServerAboutToStart.exists())
@@ -252,7 +252,7 @@ public class IntegratedServer extends MinecraftServer
 
         if (!flag && this.isGamePaused)
         {
-            logger.info("Saving and pausing game...");
+            //logger.info("Saving and pausing game...");
             this.getConfigurationManager().saveAllPlayerData();
             this.saveAllWorlds(false);
         }
@@ -273,7 +273,7 @@ public class IntegratedServer extends MinecraftServer
 
             if (this.mc.gameSettings.renderDistanceChunks != this.getConfigurationManager().getViewDistance())
             {
-                logger.info("Changing view distance to {}, from {}", new Object[] {Integer.valueOf(this.mc.gameSettings.renderDistanceChunks), Integer.valueOf(this.getConfigurationManager().getViewDistance())});
+                //logger.info("Changing view distance to {}, from {}", new Object[] {Integer.valueOf(this.mc.gameSettings.renderDistanceChunks), Integer.valueOf(this.getConfigurationManager().getViewDistance())});
                 this.getConfigurationManager().setViewDistance(this.mc.gameSettings.renderDistanceChunks);
             }
 
@@ -284,12 +284,12 @@ public class IntegratedServer extends MinecraftServer
 
                 if (!worldinfo1.isDifficultyLocked() && worldinfo.getDifficulty() != worldinfo1.getDifficulty())
                 {
-                    logger.info("Changing difficulty to {}, from {}", new Object[] {worldinfo.getDifficulty(), worldinfo1.getDifficulty()});
+                    //logger.info("Changing difficulty to {}, from {}", new Object[] {worldinfo.getDifficulty(), worldinfo1.getDifficulty()});
                     this.setDifficultyForAllWorlds(worldinfo.getDifficulty());
                 }
                 else if (worldinfo.isDifficultyLocked() && !worldinfo1.isDifficultyLocked())
                 {
-                    logger.info("Locking difficulty to {}", new Object[] {worldinfo.getDifficulty()});
+                    //logger.info("Locking difficulty to {}", new Object[] {worldinfo.getDifficulty()});
 
                     for (WorldServer worldserver : this.worldServers)
                     {
@@ -474,7 +474,7 @@ public class IntegratedServer extends MinecraftServer
             }
 
             this.getNetworkSystem().addLanEndpoint((InetAddress)null, i);
-            logger.info("Started on " + i);
+            //logger.info("Started on " + i);
             this.isPublic = true;
             this.lanServerPing = new ThreadLanServerPing(this.getMOTD(), i + "");
             this.lanServerPing.start();

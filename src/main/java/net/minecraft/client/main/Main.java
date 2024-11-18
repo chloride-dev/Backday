@@ -38,7 +38,7 @@ public class Main
         OptionSpec<String> optionspec7 = optionparser.accepts("proxyUser").withRequiredArg();
         OptionSpec<String> optionspec8 = optionparser.accepts("proxyPass").withRequiredArg();
 //        OptionSpec<String> optionspec9 = optionparser.accepts("username").withRequiredArg().defaultsTo("Player" + Minecraft.getSystemTime() % 1000L, new String[0]);
-        OptionSpec<String> optionspec9 = optionparser.accepts("username").withRequiredArg().defaultsTo("Test_" + Minecraft.getSystemTime() % 1000L);
+        OptionSpec<String> optionspec9 = optionparser.accepts("username").withRequiredArg().defaultsTo("Backday_" + Minecraft.getSystemTime() % 1000L);
         OptionSpec<String> optionspec10 = optionparser.accepts("uuid").withRequiredArg();
         OptionSpec<String> optionspec11 = optionparser.accepts("accessToken").withRequiredArg().required();
         OptionSpec<String> optionspec12 = optionparser.accepts("version").withRequiredArg().required();
@@ -110,6 +110,7 @@ public class Main
                 Minecraft.stopIntegratedServer();
             }
         });
+
         Thread.currentThread().setName("Client thread");
         (new Minecraft(gameconfiguration)).run();
     }

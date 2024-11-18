@@ -8,9 +8,9 @@ object Target : Module("Target", "choose target", ModuleCategory.Client) {
     val player = BoolValue("Players", true)
     val mobs = BoolValue("Mobs", true)
     val animals = BoolValue("Animals", true)
-    val invisibles = BoolValue("Invisibles", false)
-    val deaths = BoolValue("Deaths", false)
-    val teams = BoolValue("Teams", true)
+    val invisibles = BoolValue("Invisibles", true)
+    val deaths = BoolValue("Deaths", true)
+    val teams = BoolValue("Teams", false)
 
 
     override fun onEnable() {

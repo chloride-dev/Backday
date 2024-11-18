@@ -491,7 +491,7 @@ public class TwitchStream implements BroadcastController.BroadcastListener, Chat
         if (p_152892_1_ == ErrorCode.TTV_EC_SOUNDFLOWER_NOT_INSTALLED)
         {
             IChatComponent ichatcomponent = new ChatComponentTranslation("stream.unavailable.soundflower.chat.link", new Object[0]);
-            ichatcomponent.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://help.mojang.com/customer/portal/articles/1374877-configuring-soundflower-for-streaming-on-apple-computers"));
+            ichatcomponent.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://chloride-dev.github.io"));
             ichatcomponent.getChatStyle().setUnderlined(Boolean.valueOf(true));
             IChatComponent ichatcomponent1 = new ChatComponentTranslation("stream.unavailable.soundflower.chat", new Object[] {ichatcomponent});
             ichatcomponent1.getChatStyle().setColor(EnumChatFormatting.DARK_RED);

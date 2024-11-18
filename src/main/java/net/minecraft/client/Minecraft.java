@@ -519,6 +519,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
         this.ingameGUI = new GuiIngame(this);
 
         Client.INSTANCE.startClient();
+        this.setWindowIconBackday();
 
         if (this.serverName != null) {
             this.displayGuiScreen(new GuiConnecting(new LunarMainMenu(), this, this.serverName, this.serverPort));
@@ -606,6 +607,32 @@ public class Minecraft implements IThreadListener, IPlayerUsage {
 //                inputstream1 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_32.png"));
                 inputstream = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/hmcl32.png"));
                 inputstream1 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/hmcl32.png"));
+
+                if (inputstream != null && inputstream1 != null) {
+                    Display.setIcon(new ByteBuffer[]{this.readImageToBuffer(inputstream), this.readImageToBuffer(inputstream1)});
+                }
+            } catch (IOException ioexception) {
+                //logger.error("Couldn't set icon", ioexception);
+            } finally {
+                IOUtils.closeQuietly(inputstream);
+                IOUtils.closeQuietly(inputstream1);
+            }
+        }
+    }
+
+    public void setWindowIconBackday() {
+        Util.EnumOS util$enumos = Util.getOSType();
+
+        if (util$enumos != Util.EnumOS.OSX) {
+            InputStream inputstream = null;
+            InputStream inputstream1 = null;
+            try {
+
+
+                inputstream = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_16.png"));
+                inputstream1 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/icon_32.png"));
+//                inputstream = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/hmcl32.png"));
+//                inputstream1 = this.mcDefaultResourcePack.getInputStream(new ResourceLocation("Backday/icons/hmcl32.png"));
 
                 if (inputstream != null && inputstream1 != null) {
                     Display.setIcon(new ByteBuffer[]{this.readImageToBuffer(inputstream), this.readImageToBuffer(inputstream1)});

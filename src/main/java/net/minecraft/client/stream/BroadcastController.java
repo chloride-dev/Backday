@@ -1159,7 +1159,7 @@ public class BroadcastController
     {
         this.lastError = error;
         field_152862_C.func_152757_a("<Error> " + error);
-        logger.error(TwitchStream.STREAM_MARKER, "[Broadcast controller] {}", new Object[] {error});
+        //logger.error(TwitchStream.STREAM_MARKER, "[Broadcast controller] {}", new Object[] {error});
     }
 
     /**
@@ -1170,7 +1170,7 @@ public class BroadcastController
     protected void logWarning(String warning)
     {
         field_152862_C.func_152757_a("<Warning> " + warning);
-        logger.warn(TwitchStream.STREAM_MARKER, "[Broadcast controller] {}", new Object[] {warning});
+       // logger.warn(TwitchStream.STREAM_MARKER, "[Broadcast controller] {}", new Object[] {warning});
     }
 
     public interface BroadcastListener
