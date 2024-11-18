@@ -5,9 +5,15 @@ import net.minecraft.network.Packet;
 
 public class PacketEvent extends EventCancellable {
     private Packet<?> packet;
+    private final PacketType type;
 
-    public PacketEvent(Packet<?> packet) {
+    public enum PacketType {
+        SEND, RECEIVE
+    }
+
+    public PacketEvent(Packet<?> packet, PacketType type) {
         this.packet = packet;
+        this.type = type;
     }
 
     public Packet<?> getPacket() {
@@ -16,5 +22,9 @@ public class PacketEvent extends EventCancellable {
 
     public void setPacket(Packet<?> packet) {
         this.packet = packet;
+    }
+
+    public PacketType getType() {
+        return type;
     }
 }
